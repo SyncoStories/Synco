@@ -1,7 +1,9 @@
-function getQueryVariable(queryVariable) {
-  for(var i = 0; i < window.location.href.replace(window.location.href.split("?")[0] + "?", "").split("&?").length; i++) {
-    if(window.location.href.replace(window.location.href.split("?")[0] + "?", "").split("&?")[i].split("=")[0] == queryVariable) {
-      return window.location.replace(window.location.href.split("?")[0] + "?", "").split("&?")[i].split("=")[1];
-    }
-  }
+function getQueryVariable(variable) {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
 }

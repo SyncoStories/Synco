@@ -30,3 +30,8 @@ Leo, who had never seen anything like these people, clad in blue garments and go
 Leo woke up sprawled on the ground, with a faint smell of smoke in the air. He looked around him briefly, and found that he was back in his hunting grounds, with no sign of the van. He was back in his old clothes, and saw his gun off in the distance. Almost immediately, the faint smell of smoke had vanished, and Leo might as well have never even seen the van. He got up, and dusted himself off, looking around for any sign of the crash. No such luck. What he noticed later though, was a small badge worn by the people who took him away, that read Annebrook City Police Force. He ignored this, and ran off into the forest.'
   }
 ];
+
+
+for(var i = 0; i < stories.length; i++) {
+  document.getElementById('story-cards').innerHTML += '<div class="row"><div class="col s12 m6"><div class="card red darken-1"><div class="ca0rd-content white-text"><span class="card-title">' + stories[i].title + '</span><p>By ' + stories[i].author + '</p></div><div class="card-action"><a href="/' + stories[i].author.split(" ")[1] + '/' + stories[i].title + '">Read</a></div></div></div></div>';
+}

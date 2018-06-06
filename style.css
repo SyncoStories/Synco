@@ -8,6 +8,7 @@
     font-family: sans-serif;
     padding: 20px;
     margin: 10px;
+    box-shadow: 3px 3px 10px #b9b9b9;
 }
 
 .card-title {
@@ -20,7 +21,7 @@
 }
 
 .nav-wrapper {
-    background-color: #f39292;
+    background-color: #ff6161;
     width: 100%;
     padding: 10px;
     padding-left: 15px;

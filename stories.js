@@ -1,7 +1,7 @@
 
 var stories = [
   {
-    title: 'Apocolypse',
+    title: 'Apocalypse',
     author: 'Hayden Marquardt-Grainer',
     likes: 0,
   }

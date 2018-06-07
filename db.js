@@ -22,7 +22,7 @@ function signup() {
 function signin() {
   var uname = document.getElementById("signin-uname").value;
   var password = document.getElementById("signin-password").value;
-  firebase.auth().signInWithEmailAndPassword(uname, password).catch(function(error) {
+  firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).catch(function(error) {
     alert(error);
   });
 }

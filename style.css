@@ -64,6 +64,42 @@
   text-decoration: underline;
 }
 
+.inp-primary {
+  outline: none;
+  border: none;
+  border-bottom: 1.5px solid lightgray;
+  -webkit-transition: border-bottom 0.5s;
+  transition: border-bottom 1s;
+  font-size: 15px;
+  padding: 3px;
+  margin: 5px;
+  width: 50%;
+}
+
+.inp-primary:focus {
+  border-bottom: 1.5px solid #ff6161;
+}
+
+.btn-primary {
+  border: none;
+  background: #ff6161;
+  font-size: 18px;
+  color: white;
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+
+.btn-primary:hover {
+  background: #ea6565;
+}
+
+.btn-primary:active {
+  background: #d87676;
+}
+
 body {
     margin: 0;
     overflow: hidden;

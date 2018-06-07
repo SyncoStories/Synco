@@ -14,14 +14,15 @@ window.dbRef = firebase.database().ref();
 var user = firebase.auth().currentUser;
 
 function signup() {
-  var newUserName = document.getElementById("new-account-uname").value;
+  var newUsername = document.getElementById("new-account-uname").value;
   var newPassword = document.getElementById("new-account-pword").value;
-  firebase.auth().createUserWithEmailAndPassword(newUserName + "@fakeemail.com", newPassword).catch(function(error) {
+  var newEmail = document.getElementById("new-account-email").value;
+  firebase.auth().createUserWithEmailAndPassword(newEmail, newPassword).catch(function(error) {
     alert(error)
   });
   user = firebase.auth().currentUser;
   user.updateProfile({
-    displayName: document.getElementById("new-account-uname")
+    displayName: newUsername
   }).then(function() {
     
   }).catch(function(error) {

@@ -22,6 +22,10 @@ function signup() {
   user = firebase.auth().currentUser;
   user.updateProfile({
     displayName: document.getElementById("new-account-uname")
+  }).then(function() {
+    
+  }).catch(function(error) {
+    console.log(error);
   });
 }
 

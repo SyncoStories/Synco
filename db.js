@@ -42,7 +42,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   user = firebase.auth().currentUser;
   if (user) {
     openPage("main");
-    document.getElementById("navbar-username").innerHTML = user.email;
+    document.getElementById("navbar-username").innerHTML = user.displayName;
   } else {
     openPage("main");
     document.getElementById("navbar-username").innerHTML = '<a onclick="openPage(\'login\')">Login</a> or <a onclick="openPage(\'signup\')">Signup</a>';

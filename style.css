@@ -26,12 +26,9 @@
     font-size: 15px;
 }
 
-#story-cards {
+.page {
     -webkit-transition: transform 1s;
     transition: transform 1s;
-}
-
-.page {
     transform: translateX(100%);
 }
 

@@ -81,6 +81,7 @@
 }
 
 .btn-primary {
+  outline: none;
   border: none;
   background: #ff6161;
   font-size: 18px;

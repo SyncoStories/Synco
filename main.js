@@ -1,4 +1,4 @@
-var pageOn = "home";
+var pageOn = "main";
 document.getElementById(pageOn + "-page").style.transform = "";
 
 function openPage(page) {

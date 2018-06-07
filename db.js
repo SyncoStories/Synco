@@ -19,6 +19,10 @@ function signup() {
   firebase.auth().createUserWithEmailAndPassword(newUserName + "@fakeemail.com", newPassword).catch(function(error) {
     alert(error)
   });
+  user = firebase.auth().currentUser;
+  user.updateProfile({
+    displayName: document.getElementById("new-account-uname")
+  });
 }
 
 function signin() {
@@ -30,6 +34,7 @@ function signin() {
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
+  user = firebase.auth().currentUser;
   if (user) {
     openPage("main");
     document.getElementById("navbar-username").innerHTML = user.email;

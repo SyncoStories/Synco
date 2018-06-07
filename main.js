@@ -1,8 +1,8 @@
 var pageOn = "main";
-document.getElementById("main-page").style.left = "0";
+document.getElementById("main-page").style.display = "block";
 
 function openPage(page) {
-  document.getElementById(page + "-page").style.left = "0";
-  document.getElementById(pageOn + "-page").style.left = "100%";
+  document.getElementById(page + "-page").style.display = "block";
+  document.getElementById(pageOn + "-page").style.display = "none";
   pageOn = page;
 }

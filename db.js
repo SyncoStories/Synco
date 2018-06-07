@@ -11,6 +11,8 @@
 
 window.dbRef = firebase.database().ref();
 
+var user = firebase.auth().currentUser;
+
 function signup() {
   var newUserName = document.getElementById("new-account-uname").value;
   var newPassword = document.getElementById("new-account-pword").value;

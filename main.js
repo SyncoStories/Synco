@@ -1,8 +1,8 @@
 var pageOn = "main";
-document.getElementById(pageOn + "-page").style.transform = "";
+document.getElementById("main-page").style.transform = "translateX(0)";
 
 function openPage(page) {
   document.getElementById(page + "-page").style.transform = "";
-  document.getElementById(pageOn + "-page").style.transform = "translate(-100%)";
+  document.getElementById(pageOn + "-page").style.transform = "translateX(-100%)";
   pageOn = page;
 }

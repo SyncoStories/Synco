@@ -1,13 +1,13 @@
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyD5_yUpUvanX8_X9lh7CwjMdo3WpXYr8wc",
-  authDomain: "synco-9daf9.firebaseapp.com",
-  databaseURL: "https://synco-9daf9.firebaseio.com",
-  projectId: "synco-9daf9",
-  storageBucket: "synco-9daf9.appspot.com",
-  messagingSenderId: "1089239747248"
-};
-firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB3FDjwLrfTfSBWRo4-z_S5o9D1rFh8ulU",
+    authDomain: "synco-c1c21.firebaseapp.com",
+    databaseURL: "https://synco-c1c21.firebaseio.com",
+    projectId: "synco-c1c21",
+    storageBucket: "",
+    messagingSenderId: "333441973483"
+  };
+  firebase.initializeApp(config);
 
 window.dbRef = firebase.database().ref();
 

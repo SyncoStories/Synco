@@ -33,8 +33,7 @@
 .page {
     -webkit-transition: transform 1s;
     transition: transform 1s;
-    position: absolute;
-    left: 100%;
+    display: none;
 }
 
 .nav-wrapper {

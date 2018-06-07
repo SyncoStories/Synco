@@ -31,6 +31,10 @@
     transition: transform 1s;
 }
 
+.page {
+    transform: translateX(100%);
+}
+
 .nav-wrapper {
     background-color: #ff6161;
     width: 100%;

@@ -21,7 +21,7 @@ function signup() {
 
 function signin() {
   var uname = document.getElementById("singnin-uname").value;
-  var password = documet.getElementById("signin-password").value;
+  var password = document.getElementById("signin-password").value;
   firebase.auth().signInWithEmailAndPassword(uname, password).catch(function(error) {
     alert(error);
   });

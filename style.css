@@ -21,11 +21,6 @@
     font-size: 30px;
 }
 
-.card a {
-  color: lightyellow;
-  text-decoration: none;
-}
-
 .card p {
     color: #eccfcf;
     font-size: 15px;
@@ -36,15 +31,33 @@
     width: 100%;
     padding: 10px;
     padding-left: 15px;
+    display: table;
 }
 
-.nav-wrapper a {
+.nav-wrapper .brand-logo {
     color: white;
     text-decoration: none;
     font-family: sans-serif;
     font-size: 30px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.nav-wrapper p {
+  color: white;
+  padding-right: 30px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.nav-wrapper p a:hover {
+  text-decoration: underline;
 }
 
 body {
     margin: 0;
+}
+
+* {
+  font-family: sans-serif;
 }

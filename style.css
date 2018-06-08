@@ -50,6 +50,10 @@
   vertical-align: middle;
 }
 
+.nav-wrapper a {
+    color: white;
+}
+
 .nav-wrapper p a:hover {
   text-decoration: underline;
 }

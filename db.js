@@ -34,6 +34,8 @@ function signin() {
   var uname = document.getElementById("signin-uname").value;
   var password = document.getElementById("signin-password").value;
   firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).then(function() {
+    user = firebase.auth().currentUser;
+    document.getElementById("topbar-username").innerHTML = user.name;
     openPage("main");
   }).catch(function(error) {
     alert(error);

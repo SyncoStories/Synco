@@ -4,7 +4,7 @@
     authDomain: "synco-c1c21.firebaseapp.com",
     databaseURL: "https://synco-c1c21.firebaseio.com",
     projectId: "synco-c1c21",
-    storageBucket: "",
+    storageBucket: "synco-c1c21.appspot.com",
     messagingSenderId: "333441973483"
   };
   firebase.initializeApp(config);
@@ -39,5 +39,5 @@ function signout() {
     console.log("signed out");
   }).catch(function(error) {
     console.log(error);
-  }
+  });
 }

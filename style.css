@@ -56,9 +56,10 @@
 
 .nav-wrapper a {
     color: white;
+    text-decoration: none;
 }
 
-.nav-wrapper p a:hover {
+.nav-wrapper a:hover {
   text-decoration: underline;
 }
 

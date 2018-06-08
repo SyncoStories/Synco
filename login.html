@@ -11,7 +11,7 @@
     
   </head>
   <body>
-    <div id="login-page" class="page">
+    <div id="login-page" style="display: none;">
       <input id="signin-uname" class="inp-primary" placeholder="username">
       <br>
       <input id="signin-password" class="inp-primary" type="password" placeholder="password">
@@ -20,6 +20,26 @@
         Sign In
       </button>
     </div>
+    
+    <div id="signup-page" style="display: none;">
+      <input id="new-account-uname" class="inp-primary" placeholder="username">
+      <br>
+      <input id="new-account-email" class="inp-primary" placeholder="email">
+      <br>
+      <input id="new-account-pword" class="inp-primary" type="password" placeholder="password">
+      <br>
+      <button onclick="signup()" class="btn-primary">
+        Sign Up
+      </button>
+    </div>
+    
+    <script>
+      if(window.location.href.split('?')[1] == "signup") {
+        document.getElementById("signup-page").style.display = "block";
+      } else {
+        document.getElementById("login-page").style.display = "block";
+      }
+    </script>
     
     <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
     <script src="db.js"></script>

@@ -44,12 +44,8 @@ function signin() {
 
 function signout() {
   firebase.auth().signOut().then(function() {
-    
+    console.log("signed out");
   }).catch(function(error) {
     console.log(error);
   }
 }
-
-firebase.auth().onAuthStateChanged(function(user) {
-  user = firebase.auth().currentUser;
-});

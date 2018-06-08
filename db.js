@@ -42,6 +42,14 @@ function signin() {
   });
 }
 
+function signout() {
+  firebase.auth().signOut().then(function() {
+    
+  }).catch(function(error) {
+    console.log(error);
+  }
+}
+
 firebase.auth().onAuthStateChanged(function(user) {
   user = firebase.auth().currentUser;
 });

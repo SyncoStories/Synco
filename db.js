@@ -40,15 +40,4 @@ function signin() {
 
 firebase.auth().onAuthStateChanged(function(user) {
   user = firebase.auth().currentUser;
-  if (user !== null) {
-    openPage("main");
-    document.getElementById("navbar-username").innerHTML = user.displayName;
-  } else {
-    openPage("main");
-    document.getElementById("navbar-username").innerHTML = '<a onclick="openPage(\'login\')">Login</a> or <a onclick="openPage(\'signup\')">Signup</a>';
-  }
-}).then(function() {
-  
-}).catch(function(error) {
-  console.log(error);
 });

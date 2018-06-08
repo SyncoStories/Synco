@@ -44,7 +44,7 @@ function signout() {
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
-    document.getElementById("navbar-username").innerHTML = user.email.replace("@fakeemail.com", "");
+    document.getElementById("navbar-username").innerHTML = "<a onclick='signout()'>" + user.email.replace("@fakeemail.com", "") + "</a>";
   } else {
     document.getElementById("navbar-username").innerHTML = "<a href=\"index.html?login\">Login</a> or <a href=\"index.html?signup\">Signup</a>";
   }

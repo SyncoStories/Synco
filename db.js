@@ -16,18 +16,10 @@ var user = firebase.auth().currentUser;
 function signup() {
   var newUsername = document.getElementById("new-account-uname").value;
   var newPassword = document.getElementById("new-account-pword").value;
-  var newEmail = document.getElementById("new-account-email").value;
-  firebase.auth().createUserWithEmailAndPassword(newEmail, newPassword).catch(function(error) {
+  firebase.auth().createUserWithEmailAndPassword(newUsername + "@fakeemail.com", newPassword).catch(function(error) {
     alert(error)
   });
   user = firebase.auth().currentUser;
-  user.updateProfile({
-    displayName: newUsername
-  }).then(function() {
-    
-  }).catch(function(error) {
-    console.log(error);
-  });
 }
 
 function signin() {

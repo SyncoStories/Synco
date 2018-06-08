@@ -40,7 +40,7 @@ function signin() {
 
 firebase.auth().onAuthStateChanged(function(user) {
   user = firebase.auth().currentUser;
-  if (user) {
+  if (user !== null) {
     openPage("main");
     document.getElementById("navbar-username").innerHTML = user.displayName;
   } else {

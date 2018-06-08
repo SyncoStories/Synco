@@ -45,6 +45,11 @@
     font-size: 30px;
     display: table-cell;
     vertical-align: middle;
+    text-decoration: none;
+}
+
+.nav-wrapper .brand-logo:hover {
+    text-decoration: none;
 }
 
 .nav-wrapper p {

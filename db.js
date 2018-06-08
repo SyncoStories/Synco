@@ -27,8 +27,8 @@ function signin() {
   var password = document.getElementById("signin-password").value;
   firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).then(function() {
     user = firebase.auth().currentUser;
-    document.getElementById("topbar-username").innerHTML = user.name;
     window.location.href = "index.html";
+    document.getElementById("topbar-username").innerHTML = user.name;
   }).catch(function(error) {
     alert(error);
   });

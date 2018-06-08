@@ -45,8 +45,8 @@ function signout() {
 firbase.auth().onAuthStateChange(function(user) {
   window.location.href = "index.html";
   if(user) {
-    document.getElementById("topbar-username").innerHTML = user.email.replace("@fakeemail.com", "");
+    document.getElementById("navbar-username").innerHTML = user.email.replace("@fakeemail.com", "");
   } else {
-    document.getElementById("topbar-username").innerHTML = "<a href=\"index.html?login\">Login</a> or <a href=\"index.html?signup\">Signup</a>";
+    document.getElementById("navbar-username").innerHTML = "<a href=\"index.html?login\">Login</a> or <a href=\"index.html?signup\">Signup</a>";
   }
 });

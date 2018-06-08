@@ -47,4 +47,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     openPage("main");
     document.getElementById("navbar-username").innerHTML = '<a onclick="openPage(\'login\')">Login</a> or <a onclick="openPage(\'signup\')">Signup</a>';
   }
+}).then(function() {
+  
+}).catch(function(error) {
+  console.log(error);
 });

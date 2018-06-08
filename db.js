@@ -42,7 +42,7 @@ function signout() {
   });
 }
 
-firebase.auth().onAuthStateChange(function(user) {
+firebase.auth().onAuthStateChanged(function(user) {
   window.location.href = "index.html";
   if(user) {
     document.getElementById("navbar-username").innerHTML = user.email.replace("@fakeemail.com", "");

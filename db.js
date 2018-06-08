@@ -11,6 +11,12 @@
 
 window.dbRef = firebase.database().ref();
 
+var stories;
+
+firebase.database().ref().on("value", function(snapshot) {
+  stories = snapshot.val();
+});
+
 var user = firebase.auth().currentUser;
 
 function signup() {
@@ -47,12 +53,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
     document.getElementById("navbar-username").innerHTML = "<a href=\"index.html?login\">Login</a> or <a href=\"index.html?signup\">Signup</a>";
   }
-});
-
-var stories;
-
-firebase.database().ref().on("value", function(snapshot) {
-  stories = snapshot.val();
 });
     
 for(var i = 0; i < Object.keys(stories).length; i++) {

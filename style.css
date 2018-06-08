@@ -61,6 +61,7 @@
 .inp-primary {
   outline: none;
   border: none;
+  border-readius: none;
   border-bottom: 1.5px solid lightgray;
   -webkit-transition: border-bottom 0.5s;
   transition: border-bottom 1s;

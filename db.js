@@ -28,7 +28,6 @@ function signin() {
   firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).then(function() {
     user = firebase.auth().currentUser;
     window.location.href = "index.html";
-    document.getElementById("topbar-username").innerHTML = user.name;
   }).catch(function(error) {
     alert(error);
   });

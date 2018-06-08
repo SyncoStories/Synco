@@ -13,7 +13,7 @@ window.dbRef = firebase.database().ref();
 
 var stories;
 
-firebase.database().ref("stories").on("value", function(snapshot) {
+firebase.database().ref().on("value", function(snapshot) {
   stories = snapshot.val();
 });
     

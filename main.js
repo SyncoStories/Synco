@@ -4,9 +4,10 @@ function hideAllPages() {
   }
 }
 
-if (window.location.href.split("?")[1] == "") {
+if (window.location.href.split("?")[1]) {
   hideAllPages();
   document.getElementById("main-page").style.display = "block";
 } else {
+  hideAllPages();
   document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block";
 }

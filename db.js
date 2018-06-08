@@ -11,6 +11,16 @@
 
 window.dbRef = firebase.database().ref();
 
+var stories;
+
+firebase.database().ref("stories").on("value", function(snapshot) {
+  stories = snapshot.val();
+});
+    
+for(var i = 0; i < stories.length; i++) {
+  document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'' + stories[i].author.split(" ")[1] + '/' + stories[i].title + '\'"><span class="card-title">' + stories[i].title + '</span><p>By ' + stories[i].author + '</p></div>';
+}
+
 var user = firebase.auth().currentUser;
 
 function signup() {

@@ -4,6 +4,7 @@
 #### Upcoming and Beta Features:
 - [ ] Pro Accounts
 - [ ] Ability to Create and Star Stories Freely
+- [x] Accounts (BETA)
 - [ ] Advanced Profiles
 
 *If you have any interest in joining us at Synco, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*

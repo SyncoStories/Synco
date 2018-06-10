@@ -8,7 +8,7 @@
 - [x] Accounts (BETA)
 - [ ] Advanced Profiles
 
-*If you have any interest in joining us at Synco, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*
+*If you have any interest in joining us at Synco, or you have any questions or concerns, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*
  
  
                              Our proud founders and owners are @coffee-media and @prealge.

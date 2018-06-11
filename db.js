@@ -62,9 +62,14 @@ for(var i = 0; i < Object.keys(stories).length; i++) {
 }
 
 setInterval(function() {
-  localStorage.name = firebase.auth().currentUser.email.replace("@fakeemail.com","");
-  localStorage.auth = btoa(firebase.auth().currentUser.email.replace("@fakeemail.com",""));
-  if(atob(localStorage.auth) !== localStorage.name) {
-    window.location.href = "about:blank";
+  if(firebase.auth().currentUser) {
+    localStorage.name = firebase.auth().currentUser.email.replace("@fakeemail.com","");
+    localStorage.auth = btoa(firebase.auth().currentUser.email.replace("@fakeemail.com",""));
+    if(atob(localStorage.auth) !== localStorage.name) {
+      window.location.href = "about:blank";
+    }
+  } else {
+    localStorage.name = null;
+    localStorage.auth = null;
   }
 }, 0);

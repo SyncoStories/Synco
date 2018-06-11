@@ -11,12 +11,6 @@
 
 window.dbRef = firebase.database().ref();
 
-var stories = {};
-
-firebase.database().ref().on("value", function(snapshot) {
-  stories = snapshot.val();
-});
-
 var user = firebase.auth().currentUser;
 
 function signup() {
@@ -57,9 +51,15 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-for(var i = 0; i < Object.keys(stories).length; i++) {
+var stories = {};
+
+firebase.database().ref().on("value", function(snapshot) {
+  stories = snapshot.val();
+});
+
+setTimeout(function() {for(var i = 0; i < Object.keys(stories).length; i++) {
   document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'' + stories[Object.keys(stories)[i]].author + '/' + stories[Object.keys(stories)[i]].title + '\'"><span class="card-title">' + stories[Object.keys(stories)[i]].title + '</span><p>By ' + stories[Object.keys(stories)[i]].author + '</p></div>';
-}
+}}, 1000);
 
 setInterval(function() {
   if(firebase.auth().currentUser) {

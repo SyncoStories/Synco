@@ -59,7 +59,7 @@ firebase.database().ref().on("value", function(snapshot) {
 
 setTimeout(function() {for(var i = 0; i < Object.keys(stories).length; i++) {
   document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'' + stories[Object.keys(stories)[i]].author + '/' + stories[Object.keys(stories)[i]].title + '\'"><span class="card-title">' + stories[Object.keys(stories)[i]].title + '</span><p>By ' + stories[Object.keys(stories)[i]].author + '</p></div>';
-}}, 1000);
+}}, 500);
 
 setInterval(function() {
   if(firebase.auth().currentUser) {

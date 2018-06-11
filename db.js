@@ -57,11 +57,13 @@ firebase.database().ref().on("value", function(snapshot) {
   stories = snapshot.val();
 });
 
-setTimeout(function() {for(var i = 0; i < Object.keys(stories).length; i++) {
-  document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'' + stories[Object.keys(stories)[i]].author + '/' + stories[Object.keys(stories)[i]].title + '\'"><span class="card-title">' + stories[Object.keys(stories)[i]].title + '</span><p>By ' + stories[Object.keys(stories)[i]].author + '</p></div>';
-}}, 500);
-
 window.onload = function() {
+  for(var i = 0; i < Object.keys(stories).length; i++) {
+    document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'' + stories[Object.keys(stories)[i]].author + '/' + stories[Object.keys(stories)[i]].title + '\'"><span class="card-title">' + stories[Object.keys(stories)[i]].title + '</span><p>By ' + stories[Object.keys(stories)[i]].author + '</p></div>';
+  }
+};
+
+setInterval(function() {
   if(firebase.auth().currentUser) {
     localStorage.name = firebase.auth().currentUser.email.replace("@fakeemail.com","");
     localStorage.auth = btoa(firebase.auth().currentUser.email.replace("@fakeemail.com",""));
@@ -72,4 +74,4 @@ window.onload = function() {
     localStorage.name = null;
     localStorage.auth = null;
   }
-};
+}, 0);

@@ -11,6 +11,12 @@
 
 window.dbRef = firebase.database().ref();
 
+var stories = {};
+
+firebase.database().ref().on("value", function(snapshot) {
+  stories = snapshot.val();
+});
+
 var user = firebase.auth().currentUser;
 
 function signup() {
@@ -49,12 +55,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   } else {
     document.getElementById("navbar-username").innerHTML = "<button class='btn-primary' style='background-color: red; margin: 0;'><a href=\"index.html?login\">Login</a></button> or <button class='btn-primary' style='background-color: red; margin: 0;'><a href=\"index.html?signup\">Signup</a></button>";
   }
-});
-   
-var stories = {};
-
-firebase.database().ref().on("value", function(snapshot) {
-  stories = snapshot.val();
 });
 
 for(var i = 0; i < Object.keys(stories).length; i++) {

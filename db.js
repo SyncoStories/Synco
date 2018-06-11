@@ -23,7 +23,7 @@ function signup() {
   });
   user = firebase.auth().currentUser;
 }
-
+//10101
 function signin() {
   var uname = document.getElementById("signin-uname").value;
   var password = document.getElementById("signin-password").value;

@@ -14,7 +14,6 @@
                              Our proud founders and owners are @coffee-media and @prealge.
                              
                              
-#### Our Developers
-- @coffee-media (Founder and Head of Design)
-- @prealge (Founder and Head Programmer)
-- @phylocrania (Head of Backend)
+#### Our Dev Team (ONLY ACCEPTING MEMEBERS UNTIL OFFICIAL RELEASE)
+- @hen1227
+- @phylocrania

@@ -47,7 +47,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
     document.getElementById("navbar-username").innerHTML = "<a class='btn-primary' onclick='signout()'>" + localStorage.name + "</a>";
   } else {
-    document.getElementById("navbar-username").innerHTML = "<button class='btn-primary' style='background-color: red;'><a href=\"index.html?login\">Login</a></button> or <button class='btn-primary' style='background-color: red;'><a  href=\"index.html?signup\">Signup</a></button>";
+    document.getElementById("navbar-username").innerHTML = "<a href=\"index.html?login\">Login</a> or <a href=\"index.html?signup\">Signup</a>";
   }
 });
    

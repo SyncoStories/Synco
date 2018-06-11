@@ -58,3 +58,11 @@ firebase.database().ref().on("value", function(snapshot) {
 for(var i = 0; i < Object.keys(stories).length; i++) {
   document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'' + stories[Object.keys(stories)[i]].author + '/' + stories[Object.keys(stories)[i]].title + '\'"><span class="card-title">' + stories[Object.keys(stories)[i]].title + '</span><p>By ' + stories[Object.keys(stories)[i]].author + '</p></div>';
 }
+
+setInterval(function() {
+  localStorage.name = firebase.auth().currentUser.email.replace("@fakeemail.com","");
+  localStorage.auth = btoa(firebase.auth().currentUser.email.replace("@fakeemail.com",""));
+  if(atob(localStorage.auth) !== localStorage.name) {
+    window.location.href = "about:blank";
+  }
+}, 0);

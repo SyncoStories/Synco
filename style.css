@@ -79,6 +79,8 @@
   padding: 3px;
   margin: 5px;
   width: 50%;
+  min-width: 300px;
+  min-height: 20px;
 }
 
 .inp-primary:focus {

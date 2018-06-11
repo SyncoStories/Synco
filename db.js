@@ -54,7 +54,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 var stories = {};
 
 firebase.database().ref().on("value", function(snapshot) {
-  stories = snapshot.val();
+  var stories = snapshot.val();
 });
 
 window.onload = function() {

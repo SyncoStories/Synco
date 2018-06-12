@@ -23,7 +23,7 @@ if (!window.location.href.split("?")[1]) {
       if(snapshot.val().author == localStorage.name) {
         document.getElementById("edit-page").style.display = "block";
         document.getElementById("story-title-input").value = snapshot.val().title;
-        document.getElementById("story-text-area").value = snapshot.val().content;
+        document.getElementById("story-text-area").innerHTML = snapshot.val().content;
         document.getElementById("save-story-btn").onclick = saveStory();
       } else {
         document.getElementById("story-page").style.display = "block";

@@ -10,7 +10,7 @@ if (!window.location.href.split("?")[1]) {
   //load stories
   firebase.database().ref().once("value", function(snapshot) {
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' - ' + snapshot.val().rating + ' </p></span>';
     });
   });
 } else {
@@ -28,7 +28,7 @@ if (!window.location.href.split("?")[1]) {
           document.getElementById("save-story-btn").onclick = saveStory();
         } else {
           document.getElementById("story-page").style.display = "block";
-          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + " - " + snapshot.val().rating + "  </h5></center><p>" + snapshot.val().content + "</p>";
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
         }
       } else {
         document.getElementById("story-404-page").style.display = "block";

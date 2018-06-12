@@ -35,8 +35,7 @@
 .nav-wrapper {
     background-color: #ff6161;
     width: 100%;
-    padding: 10px;
-    padding-left: 15px;
+    padding: 10px 0px;;
     display: table;
 }
 
@@ -48,6 +47,7 @@
     display: table-cell;
     vertical-align: middle;
     text-decoration: none;
+    padding-left: 15px;
 }
 
 .nav-wrapper .brand-logo:hover {

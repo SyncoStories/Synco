@@ -3,6 +3,8 @@
 }
 
 .card {
+    float: left;
+    display: inline-block;
     width: 50%;
     height: 20%;
     min-height: 100px;

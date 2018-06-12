@@ -14,7 +14,7 @@ if (!window.location.href.split("?")[1]) {
   } else {
     hideAllPages();
     document.getElementById("story-page").style.display = "block";
-    firebase.database().ref(window.location.href.split("?")[1]).on(function(snapshot) {
+    firebase.database().ref(window.location.href.split("?")[1]).on("value", function(snapshot) {
       document.getElementById("story-page").innerHTML = snapshot.val().content;
     });
   }

@@ -3,9 +3,8 @@
 }
 
 .card {
-    text-align: center;
     float: left;
-    display: inline;
+    text-align: center;
     width: calc(50% - 20px);
     height: 20%;
     min-height: 100px;

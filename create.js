@@ -1,7 +1,8 @@
 function saveNewStory() {
-  firebase.database().ref().push({
+  var newStory = firebase.database().ref().push({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
     content: document.getElementById("story-text-area").innerHTML
   });
+  window.location.href = "index.html?" + newStory.key;
 }

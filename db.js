@@ -59,7 +59,7 @@ firebase.database().ref().once("value", function(snapshot) {
 });
 
 setInterval(function() {
-  if(firebase.auth().currentUser == firebase.auth().currentUser) {
+  if(firebase.auth().currentUser) {
     localStorage.name = firebase.auth().currentUser.email.replace("@fakeemail.com","");
     localStorage.auth = btoa(firebase.auth().currentUser.email.replace("@fakeemail.com",""));
     if(atob(localStorage.auth) !== localStorage.name) {

@@ -123,9 +123,6 @@
   border-radius: 5px;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
-  box-shadow: 1px 1px 10px black;
-  -webkit-transition: box-shadow 0.5s;
-  transition: box-shadow 0.5s;
 }
 
 .btn-primary:hover {

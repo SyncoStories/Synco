@@ -28,6 +28,7 @@ if (!window.location.href.split("?")[1]) {
           document.getElementById("story-text-area").innerHTML = snapshot.val().content;
           document.getElementById("story-text-area").onkeyup = saveStory;
           document.getElementById("story-title-input").onkeyup = saveStory;
+          document.getElementById("story-save-btn").style.display = "none";
         } else {
           document.getElementById("story-page").style.display = "block";
           document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";

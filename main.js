@@ -7,6 +7,12 @@ function hideAllPages() {
 if (!window.location.href.split("?")[1]) {
   hideAllPages();
   document.getElementById("main-page").style.display = "block";
+  //load stories
+  firebase.database().ref().once("value", function(snapshot) {
+    snapshot.forEach(function(storySnapshot) {
+      document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><span class="card-title">' + storySnapshot.val().title + '</span><p>By ' + storySnapshot.val().author + '</p></div>';
+    });
+  });
 } else {
   if(document.getElementById(window.location.href.split("?")[1] + "-page")) {
     hideAllPages();

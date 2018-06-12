@@ -1,4 +1,4 @@
-//
+//Hi
 function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
     document.getElementsByClassName("page")[i].style.display = "none";

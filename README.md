@@ -10,7 +10,7 @@
 - [ ] Advanced Profiles
 
 #### Our Dev Program Members (ONLY ACCEPTING MEMEBERS UNTIL OFFICIAL RELEASE)
-We, until the first official release, are freely accpeting memebers to join the Dev Program. The Dev Program is a program which, for alimited time, allows anyone with coding knowledge to join us with limited access. By joining, you agree to the [TERMS AND CONDITIONS](https://synco.tk/TermsAndConditions). Please read these carefully before joining.
+We, until the first official release, are freely accpeting memebers to join the Dev Program. The Dev Program is a program which, for alimited time, allows anyone with coding knowledge to join us with limited access. By joining, you agree to the [TERMS AND CONDITIONS](https://synco.tk/TermsAndConditions.txt). Please read these carefully before joining.
 
 - @hen1227
 - @phylocrania

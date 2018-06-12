@@ -1,4 +1,4 @@
-function saveNewStory() {
+function createNewStory() {
   var newStory = firebase.database().ref().push({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,

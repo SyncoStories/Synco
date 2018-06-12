@@ -8,6 +8,14 @@ if (!window.location.href.split("?")[1]) {
   hideAllPages();
   document.getElementById("main-page").style.display = "block";
 } else {
-  hideAllPages();
-  document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block";
+  if(document.getElementById(window.location.href.split("?")[1] + "-page")) {
+    hideAllPages();
+    document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block";
+  } else {
+    hideAllPages();
+    document.getElementById(window.location.href.split("?")[1] + "story-page").style.display = "block";
+    firebase.database().ref(window.location.href.split("?")[1]).on(function(snapshot) {
+      document.getElementById(window.location.href.split("?")[1] + "story-page").innerHTML = snapshot.val().content;
+    });
+  }
 }

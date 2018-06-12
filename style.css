@@ -64,6 +64,7 @@
 .nav-wrapper a {
     color: white;
     text-decoration: none;
+    padding: 10px;
 }
 
 .nav-wrapper a:hover {
@@ -133,6 +134,9 @@
   background: #d87676;
 }
 
+button a {
+    text-decoration: none;
+}
 body {
     margin: 0;
 }

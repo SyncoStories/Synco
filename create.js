@@ -8,9 +8,11 @@ function createNewStory() {
 }
 
 function saveStory() {
-  firebase.database().ref(window.location.href.split(" ")[1]).set({
-    title: document.getElementById("story-title-input").value,
-    author: localStorage.name,
-    content: document.getElementById("story-text-area").innerHTML
-  });
+  if(window.location.href.split("?")[1]) {
+    firebase.database().ref(window.location.href.split("?")[1]).set({
+      title: document.getElementById("story-title-input").value,
+      author: localStorage.name,
+      content: document.getElementById("story-text-area").innerHTML
+    });
+  }
 }

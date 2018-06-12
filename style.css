@@ -82,6 +82,17 @@
    text-align: left;
 }
 
+#edit-page {
+  margin: 0% 10%;
+}
+
+#story-text-area {
+  outline: none;
+  border: 1px solid lightgray;
+  margin: 2% 0%;
+  padding: 2%;
+}
+
 .inp-primary {
   outline: none;
   border: none;

@@ -115,7 +115,7 @@
 .btn-primary {
   outline: none;
   border: none;
-  background: #ff6161;
+  background: Tomato;
   font-size: 18px;
   color: white;
   padding: 5px 10px;
@@ -123,6 +123,9 @@
   border-radius: 5px;
   -webkit-transition-duration: 0.5s;
   transition-duration: 0.5s;
+  box-shadow: 1px 1px 10px #b9b9b9;
+  -webkit-transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s;
 }
 
 .btn-primary:hover {

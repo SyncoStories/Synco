@@ -6,7 +6,7 @@
     text-align: center;
     float: left;
     display: inline;
-    width: 50%;
+    width: calc(50% - 20px);
     height: 20%;
     min-height: 100px;
     min-width: calc(50% - 20px;);

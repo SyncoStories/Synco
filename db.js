@@ -56,6 +56,7 @@ setInterval(function() {
   if(firebase.auth().currentUser) {
     localStorage.name = firebase.auth().currentUser.email.replace("@fakeemail.com","");
     localStorage.auth = btoa(firebase.auth().currentUser.email.replace("@fakeemail.com",""));
+    document.getElementById('profile-name').innerHTML = localStorage.name;
     if(atob(localStorage.auth) !== localStorage.name) {
       window.location.href = "about:blank";
     }

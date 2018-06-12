@@ -20,14 +20,18 @@ if (!window.location.href.split("?")[1]) {
   } else {
     hideAllPages();
     firebase.database().ref(window.location.href.split("?")[1]).on("value", function(snapshot) {
-      if(snapshot.val().author == localStorage.name) {
-        document.getElementById("edit-page").style.display = "block";
-        document.getElementById("story-title-input").value = snapshot.val().title;
-        document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-        document.getElementById("save-story-btn").onclick = saveStory();
+      if(snapshot.val()) {
+        if(snapshot.val().author == localStorage.name) {
+          document.getElementById("edit-page").style.display = "block";
+          document.getElementById("story-title-input").value = snapshot.val().title;
+          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          document.getElementById("save-story-btn").onclick = saveStory();
+        } else {
+          document.getElementById("story-page").style.display = "block";
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+        }
       } else {
-        document.getElementById("story-page").style.display = "block";
-        document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+        document.getElementById("story-404-page").style.display = "block";
       }
     });
   }

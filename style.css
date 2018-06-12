@@ -4,12 +4,12 @@
 
 .card {
     float: left;
-    text-align: center;
-    width: calc(50% - 20px);
+    display: inline-block;
+    width: 50%;
     height: 20%;
     min-height: 100px;
     min-width: calc(50% - 20px;);
-    background-color: Tomato;
+    background-color: #f39292;
     color: white;
     font-family: sans-serif;
     padding: 20px;
@@ -68,6 +68,18 @@
 
 .nav-wrapper a:hover {
   text-decoration: underline;
+}
+
+#story-page {
+  margin: 0% 10%;
+}
+
+#story-page h5 {
+  color: #b5b5b5;
+}
+
+#story-page p {
+   text-align: left;
 }
 
 .inp-primary {

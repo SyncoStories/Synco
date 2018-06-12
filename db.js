@@ -54,7 +54,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
 firebase.database().ref().once("value", function(snapshot) {
   snapshot.forEach(function(storySnapshot) {
-    document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'' + storySnapshot.val().author + '/' + storySnapshot.val().title + '\'"><span class="card-title">' + storySnapshot.val().title + '</span><p>By ' + storySnapshot.val().author + '</p></div>';
+    document.getElementById('story-cards').innerHTML += '<div class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><span class="card-title">' + storySnapshot.val().title + '</span><p>By ' + storySnapshot.val().author + '</p></div>';
   });
 });
   

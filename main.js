@@ -1,4 +1,3 @@
-//Hi
 function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
     document.getElementsByClassName("page")[i].style.display = "none";
@@ -25,7 +24,9 @@ if (!window.location.href.split("?")[1]) {
         if(snapshot.val().author == localStorage.name) {
           document.getElementById("edit-page").style.display = "block";
           document.getElementById("story-title-input").value = snapshot.val().title;
-          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          if(document.getelementById("story-text-area").innerHTML !== "") {
+            document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          }
           document.getElementById("story-text-area").onkeyup = saveStory;
           document.getElementById("story-title-input").onkeyup = saveStory;
           document.getElementById("save-story-btn").style.display = "none";

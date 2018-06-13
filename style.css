@@ -3,32 +3,7 @@
 }
 
 .card {
-    display: inline-block;
-    width: 75%;
-    height: 20%;
-    min-height: 100px;
-    min-width: 500px;
     background-color: Tomato;
-    color: white;
-    font-family: sans-serif;
-    padding: 20px;
-    margin: 10px;
-    box-shadow: 1px 1px 10px #b9b9b9;
-    -webkit-transition: box-shadow 0.5s;
-    transition: box-shadow 0.5s;
-}
-
-.card:hover {
-    box-shadow: 3px 3px 10px #b9b9b9;
-}
-
-.card-title {
-    font-size: 250%;
-}
-
-.card p {
-    color: #eccfcf;
-    font-size: 180%;
 }
 
 .nav-wrapper {

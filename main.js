@@ -29,7 +29,7 @@ if (!window.location.href.split("?")[1]) {
   //load stories
   firebase.database().ref().once("value", function(snapshot) {
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<div class="row"><div class="col s12 m6"><div class="card red darken-1" onclick="window.location.href = \'?' + storySnapshot.key + '\'"><div class="card-content white-text"><span class="card-title">' + storySnapshot.val().title + '</span><p>By ' + storySnapshot.val().author + '</p></div></div></div></div>';
+      document.getElementById('story-cards').innerHTML += '<div class="row"><div class="col s12 m6 card" onclick="window.location.href = \'?' + storySnapshot.key + '\'"><div class="card-content white-text"><span class="card-title">' + storySnapshot.val().title + '</span><p>By ' + storySnapshot.val().author + '</p></div></div></div>';
     });
   });
 } else {

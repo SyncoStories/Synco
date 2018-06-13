@@ -2,18 +2,16 @@ function createNewStory() {
   var newStory = firebase.database().ref().child('/').push({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
-    content: document.getElementById("story-text-area").value
+    content: document.getElementById("story-text-area").innerText
   });
   window.location.href = "index.html?" + newStory.key;
 }
 
 function saveStory() { 
   if(window.location.href.split("?")[1]) {
-    firebase.database().ref().child(window.location.href.split("?")[1]).set({
-      title: document.getElementById("story-title-input").value,
-      author: localStorage.name,
-      content: document.getElementById("story-text-area").value
-    });
+    firebase.database().ref().child(window.location.href.split("?")[1]).child("title").set(document.getElementById("story-title-input").value);
+    firebase.database().ref().child(window.location.href.split("?")[1]).child("author").set(localStorage.name);
+    firebase.database().ref().child(window.location.href.split("?")[1]).child("content").set(document.getElementById("story-text-area").innerText);
   }
 }
 

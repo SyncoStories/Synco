@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title> Synco </title>
+    
+    <link rel="shortcut icon" href="/Icons/logo_kpi_icon.ico">
+    
+    <!--Meta Info-->
+    
+    <meta name="description" content="Synco is the ideal website for aspiring authors trying to get their ideas out there, and anyone else who enjoys a good short story!">
+    <meta name="keywords" content="Short Stories,author,fan-fiction,fan fiction,books,stories,github,synco,free">
+    
+    <!--Website CSS-->
+    <link rel="stylesheet" href="style.css">
+    
+  </head>
+  
+  <body>
+     
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="https://synco.tk" class="brand-logo"> Synco </a>
+          <p id="navbar-username" style="float:right"></p>
+        </div>
+      </nav>
+    </div>
+    <center>
+    <div id="main-page" class="page">
+      
+      <div id="story-cards">
+      </div>
+      
+    </div>
+      </center>
+    
+    <div id="story-page" class="page">
+      
+    </div>
+    
+    <div id="story-404-page" class="page">
+      <center>
+        <h1><b>404</b></h1>
+        <h6>There does not seem to be a page here</h6>
+      </center>
+    </div>
+    
+      <center>
+    <div id="login-page" class="page">
+      <input id="signin-uname" class="inp-primary" placeholder="Username">
+      <br>
+      <input id="signin-password" class="inp-primary" type="password" placeholder="Password">
+      <br>
+      <button onclick="signin()" class="btn-primary" style='background-color: red;'>
+       <a> Sign In </a>
+      </button>
+    </div>
+    
+            <div id="profile-page" class="page">
+              <h1 id="profile-name"> </h1>
+              <button class="btn-primary"><a href="?edit" style='color: white;'>Make a New Story</a></button>
+    </div>
+        
+    <div id="signup-page" class="page">
+      <input id="new-account-uname" class="inp-primary" placeholder="Username">
+      <br>
+      <input id="new-account-pword" class="inp-primary" type="password" placeholder="Password">
+      <br>
+      
+       
+     <p><center>By signing up to Synco, you agree to our <a href="https://synco.tk/TermsAndConditions.txt">TERMS AND CONDITIONS</a>.</center></p>
+        <button onclick="signup()" class="btn-primary" style='background-color: red;'>
+       <a> Sign Up </a>
+      </button>
+    </div>
+      </center>
+    <div id="edit-page" class="page">
+      <input id="story-title-input" class="inp-primary" style="font-size: 30px;" placeholder="Untitled Story">
+      <br>
+      <div id="story-text-area" contenteditable></div>
+      <br>
+      <button class="btn-primary" onclick="createNewStory()" id="save-story-btn">
+        Save
+      </button>
+    </div>
+   
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script> 
+    <script src="db.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

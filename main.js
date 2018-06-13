@@ -25,7 +25,9 @@ if (!window.location.href.split("?")[1]) {
           document.getElementById("edit-page").style.display = "block";
           document.getElementById("story-title-input").value = snapshot.val().title;
           document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-          document.getElementById("story-text-area").onkeyup = saveStory;
+          if ("addEventListener" in document.getElementById('story-text-area')) {
+           document.getElementById('story-text-area').addEventListener("keyup", saveStory, false);
+          }          
           document.getElementById("story-title-input").onkeyup = saveStory;
           document.getElementById("save-story-btn").style.display = "none";
         } else {

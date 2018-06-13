@@ -24,7 +24,7 @@ if (!window.location.href.split("?")[1]) {
         if(snapshot.val().author == localStorage.name) {
           document.getElementById("edit-page").style.display = "block";
           document.getElementById("story-title-input").value = snapshot.val().title;
-          if(document.getelementById("story-text-area").innerHTML !== "") {
+          if(document.getElementById("story-text-area").innerHTML !== "") {
             document.getElementById("story-text-area").innerHTML = snapshot.val().content;
           }
           document.getElementById("story-text-area").onkeyup = saveStory;

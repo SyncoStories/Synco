@@ -1,5 +1,5 @@
 function createNewStory() {
-  var newStory = firebase.database().ref().push({
+  var newStory = firebase.database().ref().child('/').push({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
     content: document.getElementById("story-text-area").value

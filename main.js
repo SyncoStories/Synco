@@ -38,7 +38,7 @@ if (!window.location.href.split("?")[1]) {
   //load stories
   firebase.database().ref().once("value", function(snapshot) {
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><br><p>' + storySnapshot.val().likes + ' Likes</p></span>';
     });
   });
 } else {

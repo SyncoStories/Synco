@@ -43,7 +43,6 @@ if (!window.location.href.split("?")[1]) {
       } else {
         var likeLikes = "Likes"
       }
-          
       document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes + ' ' + likeLikes + '</p></span>';
     });
   });
@@ -64,7 +63,10 @@ if (!window.location.href.split("?")[1]) {
           document.getElementById("save-story-btn").style.display = "none";
         } else {
           document.getElementById("story-page").style.display = "block";
-          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p><br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+          if(localStorage.name) {
+            document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
+          }
         }
       } else {
         document.getElementById("story-404-page").style.display = "block";

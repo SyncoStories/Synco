@@ -2,7 +2,8 @@ function createNewStory() {
   var newStory = firebase.database().ref().child('/').push({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
-    content: document.getElementById("story-text-area").innerText
+    content: document.getElementById("story-text-area").innerText,
+    likes: 0
   });
   window.location.href = "index.html?" + newStory.key;
 }
@@ -15,7 +16,15 @@ function saveStory() {
   }
 }
 
-
+function likeStory(storyId) {
+   firebase.database().ref(storyId + "/likes").transaction(function(likes) {
+  if(likes) {
+    return likes + 1
+  } else {
+    return 1
+  }
+});
+}
 
 function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
@@ -49,7 +58,7 @@ if (!window.location.href.split("?")[1]) {
           document.getElementById("save-story-btn").style.display = "none";
         } else {
           document.getElementById("story-page").style.display = "block";
-          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p><br><br><button class='btn-primary' onlclick='likeStory(" + window.location.href.split("?")[1] + ")'>Like</button>";
         }
       } else {
         document.getElementById("story-404-page").style.display = "block";

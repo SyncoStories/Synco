@@ -16,6 +16,18 @@ function saveStory() {
   }
 }
 
+function getStoryInfo(storyId) {
+  firebase.database.ref(storyId).on("value", function(snapshot) {
+    return snapshot.val();
+  });
+}
+
+function deleteStory(storyId) {
+  if(confirm("Are you sure that you want to delete this story? It will be gone forever") && prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
+    firebase.database().ref(storyId).remove();
+  }
+}
+
 function likeStory(storyId) {
    firebase.database().ref(storyId + "/likes").transaction(function(likes) {
   if(likes) {

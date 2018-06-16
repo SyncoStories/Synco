@@ -29,6 +29,7 @@ function deleteStory(storyId) {
     if(prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
       firebase.database().ref(storyId).remove();
       alert("The story has been sucessfully deleted!");
+      window.location.href = "index.html";
     } else {
       alert("Incorrect title");
     }

@@ -36,8 +36,8 @@ if (!window.location.href.split("?")[1]) {
   hideAllPages();
   document.getElementById("main-page").style.display = "block";
   //load stories
- firebase.database().ref().orderByChild("likes").once("value", function(storiesSnapshot) { 
-   storiesSnapshot.forEach(function(storySnapshot) {
+ firebase.database().ref().orderByChild("likes").once("value", function(snapshot) { 
+   snapshot.forEach(function(storySnapshot) {
       if(storySnapshot.val().likes == 1) {
         var likeLikes = "Like"
       } else {

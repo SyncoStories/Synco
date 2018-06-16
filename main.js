@@ -30,7 +30,7 @@ function deleteStory(storyId) {
       firebase.database().ref(storyId).remove();
       alert("The story has been sucessfully deleted!");
     } else {
-      alert("Incorrect title);
+      alert("Incorrect title");
     }
   }
 }

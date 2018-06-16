@@ -14,6 +14,7 @@ We, until the first official release, are freely accpeting memebers to join the 
 
 - @hen1227
 - @phylocrania
+- @hbjbook
 
 *If you have any interest in joining us here at the Synco Dev Team, or the Dev Program, or you have any questions or concerns, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*
  

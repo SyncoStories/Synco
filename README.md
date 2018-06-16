@@ -1,4 +1,4 @@
-## Synco
+## Synco v0.7
 ![Photo](https://synco.tk/Full-Logo.PNG)
 *<br>Logo by [LogoJoy](https://logojoy.com)*
 ##

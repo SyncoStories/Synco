@@ -17,14 +17,21 @@ function saveStory() {
 }
 
 function getStoryInfo(storyId) {
-  firebase.database.ref(storyId).on("value", function(snapshot) {
-    return snapshot.val();
+  var toReturn;
+  firebase.database().ref(storyId).once("value", function(snapshot) {
+    toReturn = snapshot.val();
   });
+  return toReturn;
 }
 
 function deleteStory(storyId) {
-  if(confirm("Are you sure that you want to delete this story? It will be gone forever") && prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
-    firebase.database().ref(storyId).remove();
+  if(confirm("Are you sure that you want to delete this story? It will be gone forever")){
+    if(prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
+      firebase.database().ref(storyId).remove();
+      alert("The story has been sucessfully deleted!");
+    } else {
+      alert("Incorrect title);
+    }
   }
 }
 

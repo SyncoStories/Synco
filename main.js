@@ -11,9 +11,11 @@ function createNewStory() {
 
 function saveStory() { 
   if(window.location.href.split("?")[1]) {
-    firebase.database().ref("stories").child(window.location.href.split("?")[1]).child("title").set(document.getElementById("story-title-input").value);
-    firebase.database().ref("stories").child(window.location.href.split("?")[1]).child("author").set(localStorage.name);
-    firebase.database().ref("stories").child(window.location.href.split("?")[1]).child("content").set(document.getElementById("story-text-area").innerText);
+    var storyRef = firebase.database().ref("stories/" + window.location.href.split("?")[1]);
+    storyRef.child(document.getElementById("story-title-input").value);
+    storyRef.child("author").set(localStorage.name);
+    storyRef.child("content").set(document.getElementById("story-text-area").innerText);
+    storyRef.child("tags").set(document.getElementById("tags-div").innerHTML);
   }
 }
 
@@ -80,7 +82,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("save-story-btn").onclick = saveStory;
           } else {
             document.getElementById("story-page").style.display = "block";
-            document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+            document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p><br><div>" + snapshot.val().tags + "</div>";
             if(localStorage.name !== "null") {
               document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
             }

@@ -39,9 +39,9 @@ function deleteStory(storyId) {
 function likeStory(storyId) {
    firebase.database().ref(storyId + "/likes").transaction(function(likes) {
   if(likes) {
-    return likes + 1
+    return likes - 1
   } else {
-    return 1
+    return -1
   }
 });
 }
@@ -63,7 +63,7 @@ if (!window.location.href.split("?")[1]) {
       } else {
         var likeLikes = "Likes"
       }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes + ' ' + likeLikes + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes  * -1 + ' ' + likeLikes + '</p></span>';
     });
  });
 } else {

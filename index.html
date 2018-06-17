@@ -75,7 +75,13 @@
     
     
     <div id="edit-page" class="page">
-      
+      <input id="story-title-input" class="inp-primary" style="font-size: 30px;" placeholder="Untitled Story">
+      <br>
+      <div id="story-text-area" contenteditable></div>
+      <br>
+      <button class="btn-primary" onclick="createNewStory()" id="save-story-btn">
+        Save
+      </button>
     </div>
    
     <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script> 

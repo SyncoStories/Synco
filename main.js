@@ -58,7 +58,7 @@ if (!window.location.href.split("?")[1]) {
   //load stories
  firebase.database().ref().orderByChild("likes").once("value", function(snapshot) { 
    snapshot.forEach(function(storySnapshot) {
-      if(storySnapshot.val().likes == 1) {
+      if(storySnapshot.val().likes == -1) {
         var likeLikes = "Like"
       } else {
         var likeLikes = "Likes"

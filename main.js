@@ -28,7 +28,7 @@ function getStoryInfo(storyId) {
 function deleteStory(storyId) {
   if(confirm("Are you sure that you want to delete this story? It will be gone forever")){
     if(prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
-      firebase.database().ref(storyId).remove();
+      firebase.database().ref("stories/" + storyId).remove();
       alert("The story has been sucessfully deleted!");
       window.location.href = "index.html";
     } else {
@@ -85,7 +85,6 @@ if (!window.location.href.split("?")[1]) {
               document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
             }
           }
-        }
       } else {
         document.getElementById("story-404-page").style.display = "block";
       }

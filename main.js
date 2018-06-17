@@ -78,9 +78,7 @@ if (!window.location.href.split("?")[1]) {
           document.getElementById("edit-page").style.display = "block";
           document.getElementById("story-title-input").value = snapshot.val().title;
           document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-          document.getElementById('story-text-area').addEventListener("keyup", saveStory, false);     
-          document.getElementById("story-title-input").onkeyup = saveStory;
-          document.getElementById("save-story-btn").style.display = "none";
+          document.getElementById("save-story-btn").onclick = saveStory;
         } else {
           document.getElementById("story-page").style.display = "block";
           document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";

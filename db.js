@@ -9,15 +9,12 @@
   };
   firebase.initializeApp(config);
 
-window.dbRef = firebase.database().ref();
-
 var user = firebase.auth().currentUser;
 
 function signup() {
   var newUsername = document.getElementById("new-account-uname").value;
   var newPassword = document.getElementById("new-account-pword").value;
-  firebase.database().ref().push({
-    type: "profile",
+  firebase.database().ref().child("profiles").push({
     username: newUsername
   });
   firebase.auth().createUserWithEmailAndPassword(newUsername + "@fakeemail.com", newPassword).then(function() {

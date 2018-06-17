@@ -39,9 +39,9 @@ function deleteStory(storyId) {
 function likeStory(storyId) {
    firebase.database().ref(storyId + "/likes").transaction(function(likes) {
   if(likes) {
-    return likes - 1
+    return likes + 1
   } else {
-    return -1
+    return + 1
   }
 });
 }

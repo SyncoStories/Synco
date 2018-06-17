@@ -68,9 +68,7 @@ if (!window.location.href.split("?")[1]) {
  });
 } else {
   if(document.getElementById(window.location.href.split("?")[1] + "-page")) {
-    document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block";
-  } else if(window.location.href.split("?")[1].includes("-profile")) {
-    document.getElementById("profile-page").style.display = "block";
+    document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
   } else {
     firebase.database().ref(window.location.href.split("?")[1]).on("value", function(snapshot) {
       if(snapshot.val()) {

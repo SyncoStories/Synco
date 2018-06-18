@@ -2,7 +2,7 @@ function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
-    content: document.getElementById("story-text-area").innerText,
+    content: document.getElementById("story-text-area").innerHTML,
     likes: 0
   });
   window.location.href = "index.html?" + newStory.key;

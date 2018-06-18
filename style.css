@@ -108,6 +108,7 @@ tag button:hover {
   width: 30px;
   height: 30px;
   padding: 10px;
+  float: left;
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
@@ -117,6 +118,9 @@ tag button:hover {
 }
 
 #story-edit-menu {
+  position: absolute;
+  z-index: 10;
+  background-color: white;
   display: none;
   border: 1px solid lightgray;
   border-radius: 5px;

@@ -49,6 +49,10 @@ function likeStory(storyId) {
 });
 }
 
+function removeTag(tag) {
+  tag.parentElement.parentElement.removeChild(tag.parentElement);
+}
+
 function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
     document.getElementsByClassName("page")[i].style.display = "none";

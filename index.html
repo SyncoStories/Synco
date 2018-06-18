@@ -90,9 +90,6 @@
       <br>
       <div id="story-text-area" contenteditable></div>
       <br>
-      <div class="tags" id="tags-div"></div>
-      <input onchange="document.getElementById('tags-div').innerHTML += '<tag>' + this.value + '<button onclick=\'removeTag(this)\'>x</button></tag>'; this.value = '';" style="font-size: 15px; padding: 2px;" class="inp-primary" placeholder="Add a tag">
-      <br>
       <button class="btn-primary" onclick="createNewStory()" id="save-story-btn">
         Save
       </button>

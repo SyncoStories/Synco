@@ -3,8 +3,7 @@ function createNewStory() {
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
     content: document.getElementById("story-text-area").innerText,
-    likes: 0,
-    type: 'story'
+    likes: 0
   });
   window.location.href = "index.html?" + newStory.key;
 }
@@ -15,7 +14,6 @@ function saveStory() {
     storyRef.child(document.getElementById("story-title-input").value);
     storyRef.child("author").set(localStorage.name);
     storyRef.child("content").set(document.getElementById("story-text-area").innerText);
-    storyRef.child("tags").set(document.getElementById("tags-div").innerHTML);
   }
 }
 
@@ -49,9 +47,6 @@ function likeStory(storyId) {
 });
 }
 
-function removeTag(tag) {
-  tag.parentElement.parentElement.removeChild(tag.parentElement);
-}
 
 function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
@@ -84,10 +79,9 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-title-input").value = snapshot.val().title;
             document.getElementById("story-text-area").innerHTML = snapshot.val().content;
             document.getElementById("save-story-btn").onclick = saveStory;
-            document.getElementById("tags-div").innerHMTL = snapshot.val().tags;
           } else {
             document.getElementById("story-page").style.display = "block";
-            document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p><br><div>" + snapshot.val().tags + "</div>";
+            document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
             if(localStorage.name !== "null") {
               document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
             }

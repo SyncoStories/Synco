@@ -83,8 +83,8 @@
         </center>
       </div>
       <ul id="story-edit-menu" onmouseover="mouseOverStoryEditMenu = true" onmouseout="mouseOverStoryEditMenu = undefined">
-        <li><a>Save</a></li>
-        <li><a>Delete</a></li>
+        <li onclick="saveStory()">Save</li>
+        <li onclick="deleteStory(window.location.href.split('?')[1])">Delete</li>
       </ul>
       <input id="story-title-input" class="inp-primary" style="font-size: 30px;" placeholder="Untitled Story">
       <br>

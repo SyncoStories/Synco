@@ -94,8 +94,8 @@ if (!window.location.href.split("?")[1]) {
 }
 
 //STORY EDIT DROPDOWN
-document.onclick = function() {
+/*document.onclick = function() {
   if(!mouseOverStoryEditMenu) {
     document.getElementById("story-edit-menu").style.display = 'none'
   }
-}
+}*/

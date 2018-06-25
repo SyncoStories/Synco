@@ -5,7 +5,9 @@ function createNewStory() {
     content: document.getElementById("story-text-area").innerHTML,
     likes: 0
   });
-  window.location.href = "index.html?" + newStory.key;
+  firebase.database().ref().on("child_added", function() {
+    window.location.href = "?" + newStory.key
+  });
 }
 
 function saveStory() { 

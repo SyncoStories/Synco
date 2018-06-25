@@ -5,7 +5,7 @@ function createNewStory() {
     content: document.getElementById("story-text-area").innerHTML,
     likes: 0
   });
-  window.location.href = "?" + newStory.key;
+  window.location.href = "index.html?" + newStory.key;
 }
 
 function saveStory() { 

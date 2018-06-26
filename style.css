@@ -80,6 +80,11 @@ tag {
   transition-duration: 1s;
 }
 
+#tags-input {
+  font-size: 15px;
+  padding: 1px;
+}
+
 #vertical-dot-menu div {
   width: 7px;
   height: 7px;

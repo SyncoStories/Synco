@@ -47,7 +47,7 @@ function deleteStory(storyId) {
       }
     }
   } else {
-    alert("Acess Denied");
+    alert("Access Denied");
   }
 }
 

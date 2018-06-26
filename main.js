@@ -52,8 +52,10 @@ function likeStory(storyId) {
 }
 
 function addTag() {
-  document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + document.getElementById("tags-input").value + '</tag>';
-  document.getElementById("tags-input").value = '';
+  if(document.getElementById("tags-input").value !== '') {
+    document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + document.getElementById("tags-input").value + '</tag>';
+    document.getElementById("tags-input").value = '';
+  }
 }
 
 function hideAllPages() {

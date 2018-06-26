@@ -86,6 +86,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("edit-page").style.display = "block";
             document.getElementById("story-title-input").value = snapshot.val().title;
             document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+            document.getElementById("tags").innerHTML = "";
             for(var i = 0; i < snapshot.val().tags.length; i++) {
               document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
             }

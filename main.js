@@ -83,7 +83,7 @@ if (!window.location.href.split("?")[1]) {
      } else {
        var likeLikes = "Likes"
      }
-     document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes  * -1 + ' ' + likeLikes + '</p></span>';
+     document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'" oncontextmenu="openContextMenu(event, \'<li onclick=\"window.location.href = \'index.html?' + storySnapshot.key + '\'\">Read</li>\')"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes  * -1 + ' ' + likeLikes + '</p></span>';
     });
  });
 } else {
@@ -122,9 +122,21 @@ if (!window.location.href.split("?")[1]) {
   }
 }
 
-//STORY EDIT DROPDOWN
-/*document.onclick = function() {
-  if(!mouseOverStoryEditMenu) {
-    document.getElementById("story-edit-menu").style.display = 'none'
+function openContextMenu(e, value) {
+	e = e || window.event;
+  e.preventDefault();
+  document.getElementById("context-menu").style.display = "inline-block";
+  if(value) {
+    document.getElementById("context-menu").innerHTML = value;
+  } else {
+    document.getElementById("context-menu").innerHTML = "<li>Item 1</li><li>Item 2</li>"
   }
-}*/
+  document.getElementById("context-menu").style.top = parseInt(e.clientY) + "px";
+  document.getElementById("context-menu").style.left = parseInt(e.clientX) + "px";
+}
+
+document.body.onclick = function() {
+  if(!overContextMenu) {
+    document.getElementById("context-menu").style.display = "none";
+  }
+}

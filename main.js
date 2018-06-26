@@ -4,7 +4,7 @@ function createNewStory() {
     author: localStorage.name,
     content: document.getElementById("story-text-area").innerHTML,
     likes: 0,
-    tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>')
+    tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1)
   });
   firebase.database().ref().on("child_added", function() {
     window.location.href = "?" + newStory.key
@@ -17,7 +17,7 @@ function saveStory() {
     storyRef.child(document.getElementById("story-title-input").value);
     storyRef.child("author").set(localStorage.name);
     storyRef.child("content").set(document.getElementById("story-text-area").innerText);
-    storyRef.child("tags").set(document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>'));
+    storyRef.child("tags").set(document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1));
   }
 }
 

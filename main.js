@@ -3,7 +3,8 @@ function createNewStory() {
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
     content: document.getElementById("story-text-area").innerHTML,
-    likes: 0
+    likes: 0,
+    tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>')
   });
   firebase.database().ref().on("child_added", function() {
     window.location.href = "?" + newStory.key

@@ -34,7 +34,7 @@ function deleteStory(storyId) {
   firebase.database().ref("stories/" + storyId + "/author").on("value", function(snapshot) {
     storyAuthor = snapshot.val();
   });
-  if(localStorage.name !== storyAuthor) {
+  if(localStorage.name == storyAuthor) {
     if(confirm("Are you sure that you want to delete this story? It will be gone forever")){
       if(prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
         firebase.database().ref("stories/" + storyId).remove();

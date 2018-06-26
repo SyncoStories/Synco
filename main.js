@@ -1,3 +1,5 @@
+const admins = ['prealge', 'tel', 'synco'];
+
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,
@@ -11,8 +13,8 @@ function createNewStory() {
   });
 }
 
-function saveStory() { 
-  if(window.location.href.split("?")[1]) {
+function saveStory() {
+  if (window.location.href.split("?")[1]) {
     var storyRef = firebase.database().ref("stories/" + window.location.href.split("?")[1]);
     storyRef.child(document.getElementById("story-title-input").value);
     storyRef.child("author").set(localStorage.name);
@@ -34,9 +36,9 @@ function deleteStory(storyId) {
   firebase.database().ref("stories/" + storyId + "/author").on("value", function(snapshot) {
     storyAuthor = snapshot.val();
   });
-  if(localStorage.name == storyAuthor) {
-    if(confirm("Are you sure that you want to delete this story? It will be gone forever")){
-      if(prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
+  if (localStorage.name == storyAuthor) {
+    if (confirm("Are you sure that you want to delete this story? It will be gone forever")) {
+      if (prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
         firebase.database().ref("stories/" + storyId).remove();
         alert("The story has been sucessfully deleted!");
         window.location.href = "index.html";
@@ -50,17 +52,17 @@ function deleteStory(storyId) {
 }
 
 function likeStory(storyId) {
-   firebase.database().ref("stories/" + storyId + "/likes").transaction(function(likes) {
-  if(likes) {
-    return likes - 1
-  } else {
-    return - 1
-  }
-});
+  firebase.database().ref("stories/" + storyId + "/likes").transaction(function(likes) {
+    if (likes) {
+      return likes - 1
+    } else {
+      return -1
+    }
+  });
 }
 
 function addTag() {
-  if(document.getElementById("tags-input").value !== '') {
+  if (document.getElementById("tags-input").value !== '') {
     document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + document.getElementById("tags-input").value + '</tag>';
     document.getElementById("tags-input").value = '';
   }
@@ -76,45 +78,48 @@ hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
   //load stories
- firebase.database().ref("stories").orderByChild("likes").once("value", function(snapshot) { 
-   snapshot.forEach(function(storySnapshot) {
-     if(storySnapshot.val().likes == -1) {
-       var likeLikes = "Like"
-     } else {
-       var likeLikes = "Likes"
-     }
-     document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'" oncontextmenu="openContextMenu(event, \'<li onclick=\"window.location.href = \'index.html?' + storySnapshot.key + '\'\">Read</li>\')"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes  * -1 + ' ' + likeLikes + '</p></span>';
+  firebase.database().ref("stories").orderByChild("likes").once("value", function(snapshot) {
+    snapshot.forEach(function(storySnapshot) {
+      if (storySnapshot.val().likes == -1) {
+        var likeLikes = "Like"
+      } else {
+        var likeLikes = "Likes"
+      }
+      if (admins.includes(localStorage.name)) {
+	var storyCardContextMenu = '<li onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'">Read</li><li onclick="deleteStory(\'' + storySnapshot.key + '\')">Delete</li>';
+      }
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'" oncontextmenu="openContextMenu(event, \'' + storyCardContextMenu + '\')"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes * -1 + ' ' + likeLikes + '</p></span>';
     });
- });
+  });
 } else {
-  if(document.getElementById(window.location.href.split("?")[1] + "-page")) {
+  if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
   } else {
     firebase.database().ref("stories/" + window.location.href.split("?")[1]).on("value", function(snapshot) {
-      if(snapshot.val()) {
-          if(snapshot.val().author == localStorage.name) {
-            document.getElementById("edit-page").style.display = "block";
-            document.getElementById("story-title-input").value = snapshot.val().title;
-            document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-            document.getElementById("tags").innerHTML = "";
-            if(snapshot.val().tags) {
-              for(var i = 0; i < snapshot.val().tags.length; i++) {
-                document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
-              }
-            }
-            document.getElementById("save-story-btn").onclick = saveStory;
-          } else {
-            document.getElementById("story-page").style.display = "block";
-            document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
-            if(snapshot.val().tags) {
-              for(var i = 0; i < snapshot.val().tags.length; i++) {
-                document.getElementById("story-page").innerHTML += "<tag>" + snapshot.val().tags[i] + "</tag>";
-              }
-            }
-            if(localStorage.name !== "null") {
-              document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
+      if (snapshot.val()) {
+        if (snapshot.val().author == localStorage.name) {
+          document.getElementById("edit-page").style.display = "block";
+          document.getElementById("story-title-input").value = snapshot.val().title;
+          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          document.getElementById("tags").innerHTML = "";
+          if (snapshot.val().tags) {
+            for (var i = 0; i < snapshot.val().tags.length; i++) {
+              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
             }
           }
+          document.getElementById("save-story-btn").onclick = saveStory;
+        } else {
+          document.getElementById("story-page").style.display = "block";
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+          if (snapshot.val().tags) {
+            for (var i = 0; i < snapshot.val().tags.length; i++) {
+              document.getElementById("story-page").innerHTML += "<tag>" + snapshot.val().tags[i] + "</tag>";
+            }
+          }
+          if (localStorage.name !== "null") {
+            document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
+          }
+        }
       } else {
         document.getElementById("story-404-page").style.display = "block";
       }
@@ -123,10 +128,10 @@ if (!window.location.href.split("?")[1]) {
 }
 
 function openContextMenu(e, value) {
-	e = e || window.event;
+  e = e || window.event;
   e.preventDefault();
   document.getElementById("context-menu").style.display = "inline-block";
-  if(value) {
+  if (value) {
     document.getElementById("context-menu").innerHTML = value;
   } else {
     document.getElementById("context-menu").innerHTML = "<li>Item 1</li><li>Item 2</li>"
@@ -136,7 +141,7 @@ function openContextMenu(e, value) {
 }
 
 document.body.onclick = function() {
-  if(!overContextMenu) {
+  if (!overContextMenu) {
     document.getElementById("context-menu").style.display = "none";
   }
 }

@@ -131,11 +131,7 @@ function openContextMenu(e, value) {
   e = e || window.event;
   e.preventDefault();
   document.getElementById("context-menu").style.display = "inline-block";
-  if (value) {
-    document.getElementById("context-menu").innerHTML = value;
-  } else {
-    document.getElementById("context-menu").innerHTML = "<li>Item 1</li><li>Item 2</li>"
-  }
+  document.getElementById("context-menu").innerHTML = value;
   document.getElementById("context-menu").style.top = parseInt(e.clientY) + "px";
   document.getElementById("context-menu").style.left = parseInt(e.clientX) + "px";
 }

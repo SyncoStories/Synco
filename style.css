@@ -71,28 +71,13 @@
 }
 
 tag {
-  background: #ededed;
-  border-radius: 50px;
+  background: lightgray;
+  color: gray;
   padding: 2px 10px;
   margin: 2px;
-  color: gray;
+  border-radius: 20px;
   float: left;
-}
-
-tag button {
-  outline: none;
-  padding: 3px;
-  border: none;
-  margin-left: 5px;
-  color: gray;
-  border-radius: 3px;
-  background-color: transparent;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-}
-
-tag button:hover {
-  background-color: #e5e5e5;
+  transition-duration: 1s;
 }
 
 #vertical-dot-menu div {

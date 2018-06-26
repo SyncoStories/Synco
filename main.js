@@ -96,6 +96,9 @@ if (!window.location.href.split("?")[1]) {
           } else {
             document.getElementById("story-page").style.display = "block";
             document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+            for(var i = 0; i < snapshot.val().tags.length; i++) {
+              document.getElementById("story-page").innerHTML += "<tag>" + snapshot.val().tags[i] + "</tag>";
+            }
             if(localStorage.name !== "null") {
               document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
             }

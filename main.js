@@ -86,7 +86,7 @@ if (!window.location.href.split("?")[1]) {
         var likeLikes = "Likes"
       }
       if (admins.includes(localStorage.name)) {
-	var storyCardContextMenu = '<li onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'">Read</li><li onclick="deleteStory(\'' + storySnapshot.key + '\')">Delete</li>';
+	var storyCardContextMenu = '<li onclick=\'window.location.href = \'index.html?' + storySnapshot.key + '\'\'>Read</li><li onclick=\'deleteStory(\'' + storySnapshot.key + '\')\'>Delete</li>';
       }
       document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'" oncontextmenu="openContextMenu(event, \'' + storyCardContextMenu + '\')"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes * -1 + ' ' + likeLikes + '</p></span>';
     });

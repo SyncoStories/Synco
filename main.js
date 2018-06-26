@@ -97,8 +97,10 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-title-input").value = snapshot.val().title;
             document.getElementById("story-text-area").innerHTML = snapshot.val().content;
             document.getElementById("tags").innerHTML = "";
-            for(var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
+            if(snapshot.val().tags) {
+              for(var i = 0; i < snapshot.val().tags.length; i++) {
+                document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
+              }
             }
             document.getElementById("save-story-btn").onclick = saveStory;
           } else {

@@ -126,18 +126,3 @@ if (!window.location.href.split("?")[1]) {
     });
   }
 }
-
-function openContextMenu(e, value) {
-  e = e || window.event;
-  e.preventDefault();
-  document.getElementById("context-menu").style.display = "inline-block";
-  document.getElementById("context-menu").innerHTML = value;
-  document.getElementById("context-menu").style.top = parseInt(e.clientY) + "px";
-  document.getElementById("context-menu").style.left = parseInt(e.clientX) + "px";
-}
-
-document.body.onclick = function() {
-  if (!overContextMenu) {
-    document.getElementById("context-menu").style.display = "none";
-  }
-}

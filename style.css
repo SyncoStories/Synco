@@ -85,25 +85,6 @@ tag {
   padding: 1px;
 }
 
-#context-menu {
-  position: fixed;
-  display: none;
-  margin: none;
-  padding: 0px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-#context-menu li {
-  list-style-type: none;
-  padding: 2px 10px;
-  background-color: #eeeeee;
-}
-
-#context-menu li:hover {
-  background-color: #e8e8e8;
-}
-
 #vertical-dot-menu div {
   width: 7px;
   height: 7px;

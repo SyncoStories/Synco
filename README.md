@@ -1,16 +1,17 @@
-## Synco - v0.8
+## Synco - v0.9
 ![Photo](https://synco.tk/Full-Logo.PNG)
 *<br>Logo by [LogoJoy](https://logojoy.com)*
 ##
 [Synco](https://synco.tk) is a website for writers to publish work online. We are currently in Alpha prerelease, but are soon to be in    Beta stages. Currently, we are not accepting any stories as of right now, and are still tesing and fixing up the database. We take pride in having all original code, and so the only non-original program that we used is [Firebase](https://firebase.google.com/), owned by [Google](https://google.com).
 #### Upcoming and Beta Features:
 - [ ] Pro Accounts
-- [ ] Ability to Create and Star Stories Freely
-- [x] Accounts (BETA)
+- [x] Ability to Create and Star Stories Freely (TESTING)
+- [x] Accounts
 - [ ] Advanced Profiles
 
 #### Our Dev Program Members (ONLY ACCEPTING MEMEBERS UNTIL OFFICIAL RELEASE)
 We, until the first official release, are freely accpeting memebers to join the Dev Program. The Dev Program is a program which, for alimited time, allows anyone with coding knowledge to join us with limited access. By joining, you agree to the [TERMS AND CONDITIONS](https://synco.tk/TermsAndConditions.txt). Please read these carefully before joining.
+NOTE: The dev program will be closing soon, so hurry up.
 
 - @hen1227
 - @phylocrania

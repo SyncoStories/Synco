@@ -20,7 +20,7 @@ NOTE: The dev program will be closing soon, so hurry up.
 *If you have any interest in joining us here at the Synco Dev Team, or the Dev Program, or you have any questions or concerns, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*
  
  
-                             Our proud founders and owners are @coffee-media and @prealge.
+                             Our proud founders and owners are @TelOfLolth and @prealge.
                              
                              
 

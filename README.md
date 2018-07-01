@@ -12,7 +12,7 @@
 #### Almost at Beta!
 We've worked for a while now on a project called Synco, and it has flourished beyond are hopes and dreams. While we've closed the Dev Program, we are still hiring programmers and designers to help us make Synco even better.
 
-*If you have any interest in joining us here at the Synco Dev Team, or the Dev Program, or you have any questions or concerns, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*.
+*If you have any interest in joining us here at the Synco Team, or you have any questions or concerns, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*.
  
  
                              Our proud founders and owners are @TelOfLolth and @prealge.

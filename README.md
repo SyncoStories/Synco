@@ -9,15 +9,10 @@
 - [x] Accounts
 - [ ] Advanced Profiles
 
-#### Our Dev Program Members (ONLY ACCEPTING MEMEBERS UNTIL OFFICIAL RELEASE)
-We, until the first official release, are freely accpeting memebers to join the Dev Program. The Dev Program is a program which, for alimited time, allows anyone with coding knowledge to join us with limited access. By joining, you agree to the [TERMS AND CONDITIONS](https://synco.tk/TermsAndConditions.txt). Please read these carefully before joining.
-NOTE: The dev program will be closing soon, so hurry up.
+#### Almost at Beta!
+We've worked for a while now on a project called Synco, and it has flourished beyond are hopes and dreams. While we've closed the Dev Program, we are still hiring programmers and designers to help us make Synco even better.
 
-- @hen1227
-- @phylocrania
-- @hbjbook
-
-*If you have any interest in joining us here at the Synco Dev Team, or the Dev Program, or you have any questions or concerns, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*
+*If you have any interest in joining us here at the Synco Dev Team, or the Dev Program, or you have any questions or concerns, please contact us at [synco.help@gmail.com](mailto:synco.help@gmail.com?Subject=Synco%20Employment%20Request)*.
  
  
                              Our proud founders and owners are @TelOfLolth and @prealge.

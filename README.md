@@ -7,6 +7,10 @@
 - [ ] Pro Accounts
 - [x] Ability to Create and Star Stories Freely
 - [x] Accounts
+- [x] Admin Accounts
+- [ ] Story Rating
+- [ ] Age Appropriate Reccomendations
+- [ ] Searching
 - [ ] Advanced Profiles
 
 #### Almost at Beta!

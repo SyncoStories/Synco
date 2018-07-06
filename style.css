@@ -3,6 +3,10 @@
     background-color: tomato;
 }
 
+br {
+    user-select: none;
+}
+
 .page {
     display: none;
 }

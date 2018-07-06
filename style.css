@@ -1,3 +1,7 @@
+::selection {
+    color: white;
+    background-color: tomato;
+}
 
 .page {
     display: none;

@@ -2,7 +2,7 @@
 ![Photo](https://synco.tk/Logo2.0.PNG)
 *<br>Logo by [LogoJoy](https://logojoy.com)*
 ##
-[Synco](https://synco.tk) is a website for writers to publish work online. We are currently in Alpha prerelease, but are soon to be in    Beta stages. Currently, we are not accepting any stories as of right now, and are still tesing and fixing up the database. We take pride in having all original code, and so the only non-original program that we used is [Firebase](https://firebase.google.com/), owned by [Google](https://google.com).
+[Synco](https://synco.tk) is a website for writers to publish work online. We are currently in Alpha prerelease, but are soon to be in    Beta stages. Currently, we are not accepting any stories as of right now, and are still tesing and fixing up the database. We take pride in having original code, but we take pride in using [Firebase](https://firebase.google.com/), owned by [Google](https://google.com), and [Fuse.js](https://fusejs.io), which is a fantastic fuzzy search library.
 #### Upcoming and Beta Features:
 - [ ] Pro Accounts
 - [x] Ability to Create and Star Stories Freely

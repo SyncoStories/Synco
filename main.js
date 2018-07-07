@@ -1,4 +1,4 @@
-const admins = ['prealge', 'Tel-of-lolth', 'synco', 'isy123'];
+const admins = ['prealge', 'tel-of-lolth', 'synco', 'isy123'];
 
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({

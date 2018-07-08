@@ -68,19 +68,21 @@ function addTag() {
   }
 }
 
-function editStory() {
-  if (snapshot.val().author == localStorage.name) {
-        document.getElementById("edit-page").style.display = "block";
-        document.getElementById("story-title-input").value = snapshot.val().title;
-        document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-        document.getElementById("tags").innerHTML = "";
-        if (snapshot.val().tags) {
-          for (var i = 0; i < snapshot.val().tags.length; i++) {
-            document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
-          }
-       }
-     document.getElementById("save-story-btn").onclick = saveStory;
-  }
+function editStory(storyId) {
+  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
+    if (snapshot.val().author == localStorage.name) {
+          document.getElementById("edit-page").style.display = "block";
+          document.getElementById("story-title-input").value = snapshot.val().title;
+          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          document.getElementById("tags").innerHTML = "";
+          if (snapshot.val().tags) {
+            for (var i = 0; i < snapshot.val().tags.length; i++) {
+              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
+            }
+         }
+       document.getElementById("save-story-btn").onclick = saveStory;
+    }
+  });
 }
 
 function loadStories(snapshot) {
@@ -137,7 +139,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\")'>Delete</button>";
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory()' style='border-radius: 50%; position: fixed; right: 5px; bottom: 5px; box-shadow: 3px 3px 10px gray;'><div id='pencil-icon'><i></i></div></button>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='border-radius: 50%; position: fixed; right: 5px; bottom: 5px; box-shadow: 3px 3px 10px gray;'><div id='pencil-icon'><i></i></div></button>";
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

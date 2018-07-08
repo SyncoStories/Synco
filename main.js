@@ -6,10 +6,9 @@ function createNewStory() {
     author: localStorage.name,
     uid: firebase.auth().currentUser.uid,
     content: document.getElementById("story-text-area").innerHTML,
-    likes: 0,
     tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1),
     public: {
-      
+      likes: 0,
     }
   });
   firebase.database().ref().on("child_added", function() {
@@ -56,7 +55,7 @@ function deleteStory(storyId) {
 }
 
 function likeStory(storyId) {
-  firebase.database().ref("stories/" + storyId + "/likes").transaction(function(likes) {
+  firebase.database().ref("stories/" + storyId + "/public/likes").transaction(function(likes) {
     if (likes) {
       return likes - 1
     } else {
@@ -80,7 +79,7 @@ function loadStories(snapshot) {
       } else {
         var likeLikes = "Likes"
       }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().likes * -1 + ' ' + likeLikes + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' ' + likeLikes + '</p></span>';
     });
 }
 

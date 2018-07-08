@@ -98,7 +98,7 @@ function editStory(storyId) {
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
-  firebase.database().ref("stories").orderByChild("likes").once("value", function(snapshot) {
+  firebase.database().ref("stories").orderByChild("public/likes").once("value", function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
       if (storySnapshot.val().likes == -1) {

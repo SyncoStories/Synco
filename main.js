@@ -1,3 +1,7 @@
+firebase.database().ref("admins").once("value", function(snapshot) {
+  const admins = snapshot.val();
+});
+
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,

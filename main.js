@@ -139,7 +139,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\")'>Delete</button>";
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='border-radius: 50%; position: fixed; right: 5px; bottom: 5px; box-shadow: 3px 3px 10px gray;'><div id='pencil-icon'><i></i></div></button>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='border-radius: 50%; position: fixed; right: 5px; bottom: 5px; box-shadow: 3px 3px 10px gray;'><div class='pencil-icon'><i></i></div></button>";
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

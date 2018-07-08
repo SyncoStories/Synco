@@ -1,5 +1,3 @@
-const admins = ['prealge', 'tel-of-lolth', 'synco', 'isy123'];
-
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,
@@ -35,22 +33,10 @@ function getStoryInfo(storyId) {
 }
 
 function deleteStory(storyId) {
-  var storyAuthor;
-  firebase.database().ref("stories/" + storyId + "/author").on("value", function(snapshot) {
-    storyAuthor = snapshot.val();
-  });
-  if (localStorage.name == storyAuthor || admins.includes(localStorage.name)) {
-    if (confirm("Are you sure that you want to delete this story? It will be gone forever")) {
-      if (prompt("Enter the story's name to confirm") == getStoryInfo(storyId).title) {
-        firebase.database().ref("stories/" + storyId).remove();
-        alert("The story has been sucessfully deleted!");
-        window.location.href = "index.html";
-      } else {
-        alert("Incorrect title");
-      }
-    }
-  } else {
-    alert("Access Denied");
+  firebase.database().ref("stories/" + storyId).remove().then(function() {
+    alert("The story has been sucessfully deleted!");
+  }).catch(function(error) {
+    alert(error);
   }
 }
 

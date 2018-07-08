@@ -145,6 +145,9 @@ tag {
 
 #story-page p {
    text-align: left;
+   outline: none;
+   border: 1px solid transparent;
+   padding: 2%;
 }
 
 #edit-page {
@@ -154,7 +157,7 @@ tag {
 #story-text-area {
   outline: none;
   border: 1px solid lightgray;
-  margin: 2% 0%;
+  margin: 2% 0% 0% 0%;
   padding: 2%;
 }
 

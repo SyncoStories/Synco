@@ -93,48 +93,6 @@ tag {
   padding: 1px;
 }
 
-#vertical-dot-menu div {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: gray;
-  margin: 2px;
-}
-
-#vertical-dot-menu {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  padding: 10px;
-  float: left;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-}
-
-#vertical-dot-menu:active {
-  background-color: lightgray;
-}
-
-#story-edit-menu {
-  position: absolute;
-  z-index: 10;
-  background-color: white;
-  display: none;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  padding: 0px;
-}
-
-#story-edit-menu li {
-  list-style-type: none;
-  padding: 3px 10px;
-  color: gray;
-}
-
-#story-edit-menu li:hover {
-  background-color: #eaeaea;
-}
-
 #story-page {
   margin: 0% 10%;
 }

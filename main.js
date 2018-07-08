@@ -4,9 +4,13 @@ function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
+    uid: firebase.auth().currentUser.uid,
     content: document.getElementById("story-text-area").innerHTML,
     likes: 0,
-    tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1)
+    tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1),
+    public: {
+      
+    }
   });
   firebase.database().ref().on("child_added", function() {
     window.location.href = "?" + newStory.key

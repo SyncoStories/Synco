@@ -108,18 +108,6 @@ if (!window.location.href.split("?")[1]) {
   } else {
     firebase.database().ref("stories/" + window.location.href.split("?")[1]).on("value", function(snapshot) {
       if (snapshot.val()) {
-        if (snapshot.val().author == localStorage.name) {
-          document.getElementById("edit-page").style.display = "block";
-          document.getElementById("story-title-input").value = snapshot.val().title;
-          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-          document.getElementById("tags").innerHTML = "";
-          if (snapshot.val().tags) {
-            for (var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
-            }
-          }
-          document.getElementById("save-story-btn").onclick = saveStory;
-        } else {
           document.getElementById("story-page").style.display = "block";
           document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
           if (snapshot.val().tags) {
@@ -133,7 +121,9 @@ if (!window.location.href.split("?")[1]) {
           if(admins.includes(localStorage.name)) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\")'>Delete</button>";
           }
-        }
+          if(localStorage.name == snapshot.val().author) {
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='if (snapshot.val().author == localStorage.name) {document.getElementById(\"edit-page\").style.display = \"block\";document.getElementById(\"story-title-input\").value = snapshot.val().title;document.getElementById(\"story-text-area\").innerHTML = snapshot.val().content;document.getElementById(\"tags\").innerHTML = \"\";if (snapshot.val().tags) {for (var i = 0; i < snapshot.val().tags.length; i++) {document.getElementById(\"tags\").innerHTML += \"<tag onclick=\'this.parentElement.removeChild(this)\'>\" + snapshot.val().tags[i] + \"</tag>\";}}document.getElementById(\"save-story-btn\").onclick = saveStory;}' style='border-radius: 50%; position: fixed; right: 5px; bottom: 5px; box-shadow: 3px 3px 10px gray;'><div id='pencil-icon'><i></i></div></button>";
+          }
       } else {
         document.getElementById("story-404-page").style.display = "block";
       }

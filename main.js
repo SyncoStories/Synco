@@ -99,6 +99,7 @@ function hideAllPages() {
 }
 
 function editStory(storyId) {
+  hideAllPages();
   firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
     if (snapshot.val().author == localStorage.name) {
           document.getElementById("edit-page").style.display = "block";

@@ -71,30 +71,6 @@ function addTag() {
   }
 }
 
-function loadStories(snapshot) {
-  document.getElementById('story-cards').innerHTML = '';
-  snapshot.forEach(function(storySnapshot) {
-      if (storySnapshot.val().likes == -1) {
-        var likeLikes = "Like"
-      } else {
-        var likeLikes = "Likes"
-      }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' ' + likeLikes + '</p></span>';
-    });
-}
-
-function loadStoriesByAuthor(author) {
-  firebaase.database().ref("stories").orderByChild('author').equalTo(author).once("value", function(snapshot) {
-    loadStories(snapshot);
-  });
-}
-
-function loadStoriesByLikes() {
-  firebase.database().ref("stories").orderByChild("likes").once("value", function(snapshot) {
-    loadStories(snapshot);
-  });
-}
-
 function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
     document.getElementsByClassName("page")[i].style.display = "none";
@@ -122,7 +98,17 @@ function editStory(storyId) {
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
-  loadStoriesByLikes();
+  firebase.database().ref("stories").orderByChild("likes").once("value", function(snapshot) {
+    document.getElementById('story-cards').innerHTML = '';
+    snapshot.forEach(function(storySnapshot) {
+      if (storySnapshot.val().likes == -1) {
+        var likeLikes = "Like"
+      } else {
+        var likeLikes = "Likes"
+      }
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' ' + likeLikes + '</p></span>';
+    });
+  });
 } else {
   if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"

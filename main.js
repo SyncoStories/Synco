@@ -37,7 +37,7 @@ function deleteStory(storyId) {
     alert("The story has been sucessfully deleted!");
   }).catch(function(error) {
     alert(error);
-  }
+  })
 }
 
 function likeStory(storyId) {

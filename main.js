@@ -68,23 +68,6 @@ function addTag() {
   }
 }
 
-function editStory(storyId) {
-  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
-    if (snapshot.val().author == localStorage.name) {
-          document.getElementById("edit-page").style.display = "block";
-          document.getElementById("story-title-input").value = snapshot.val().title;
-          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-          document.getElementById("tags").innerHTML = "";
-          if (snapshot.val().tags) {
-            for (var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
-            }
-         }
-       document.getElementById("save-story-btn").onclick = saveStory;
-    }
-  });
-}
-
 function loadStories(snapshot) {
   document.getElementById('story-cards').innerHTML = '';
   snapshot.forEach(function(storySnapshot) {
@@ -113,6 +96,23 @@ function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
     document.getElementsByClassName("page")[i].style.display = "none";
   }
+}
+
+function editStory(storyId) {
+  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
+    if (snapshot.val().author == localStorage.name) {
+          document.getElementById("edit-page").style.display = "block";
+          document.getElementById("story-title-input").value = snapshot.val().title;
+          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          document.getElementById("tags").innerHTML = "";
+          if (snapshot.val().tags) {
+            for (var i = 0; i < snapshot.val().tags.length; i++) {
+              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
+            }
+         }
+       document.getElementById("save-story-btn").onclick = saveStory;
+    }
+  });
 }
 
 hideAllPages();

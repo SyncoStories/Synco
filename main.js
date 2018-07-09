@@ -1,6 +1,4 @@
-firebase.database().ref("admins").once("value", function(snapshot) {
-  const admins = snapshot.val();
-});
+const admins = ["prealge", "synco", "tel-of-lolth"];
 
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
@@ -113,7 +111,7 @@ if (!window.location.href.split("?")[1]) {
           if (localStorage.name !== "null") {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
           }
-          if(admins.includes(firebase.auth().currentUser.uid)) {
+          if(admins.includes(localStorage.name)) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\")'>Delete</button>";
           }
           if(localStorage.name == snapshot.val().author) {

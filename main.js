@@ -13,9 +13,7 @@ function createNewStory() {
       likes: 0,
     }
   });
-  firebase.database().ref().on("child_added", function() {
-    window.location.href = "?" + newStory.key
-  });
+  window.location.href = "?" + newStory.key;
 }
 
 function saveStory() {

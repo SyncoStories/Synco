@@ -112,7 +112,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
           }
           if(admins.includes(localStorage.name)) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\")'>Delete</button>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\"); window.location.href = \"index.html\"'>Delete</button>";
           }
           if(localStorage.name == snapshot.val().author) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='border-radius: 50%; position: fixed; right: 5px; bottom: 5px; box-shadow: 3px 3px 10px gray;'><div class='pencil-icon'><i></i></div></button>";

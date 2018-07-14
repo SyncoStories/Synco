@@ -17,7 +17,7 @@ function createNewStory() {
 function saveStory() {
   if (window.location.href.split("?")[1]) {
     var storyRef = firebase.database().ref("stories/" + window.location.href.split("?")[1]);
-    storyRef.child(document.getElementById("story-title-input").value);
+    storyRef.child("title").set(document.getElementById("story-title-input").value);
     storyRef.child("author").set(localStorage.name);
     storyRef.child("content").set(document.getElementById("story-text-area").innerText);
     storyRef.child("tags").set(document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1));

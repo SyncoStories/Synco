@@ -115,7 +115,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\"); window.location.href = \"index.html\"'>Delete</button>";
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary round-hover' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='float: left'><div class='pencil-icon'><i></i></div></button>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary round-hover' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><div class='pencil-icon'><i></i></div></button>";
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

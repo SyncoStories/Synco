@@ -99,7 +99,7 @@ if (!window.location.href.split("?")[1]) {
   if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
   } else {
-    firebase.database().ref("stories/" + window.location.href.split("?")[1]).on("value", function(snapshot) {
+    firebase.database().ref("stories/" + window.location.href.split("?")[1]).once("value", function(snapshot) {
       if (snapshot.val()) {
           document.getElementById("story-page").style.display = "block";
           document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";

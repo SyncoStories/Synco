@@ -100,7 +100,7 @@ if (!window.location.href.split("?")[1]) {
     firebase.database().ref("stories/" + window.location.href.split("?")[1]).once("value", function(snapshot) {
       if (snapshot.val()) {
           document.getElementById("story-page").style.display = "block";
-          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><p>" + snapshot.val().content + "</p>";
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><div>" + snapshot.val().content + "</div>";
           if (snapshot.val().tags) {
             for (var i = 0; i < snapshot.val().tags.length; i++) {
               document.getElementById("story-page").innerHTML += "<tag>" + snapshot.val().tags[i] + "</tag>";

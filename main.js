@@ -1,5 +1,3 @@
-const admins = ["prealge", "synco", "tel-of-lolth"];
-
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,
@@ -110,9 +108,6 @@ if (!window.location.href.split("?")[1]) {
           }
           if (localStorage.name !== "null") {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
-          }
-          if(admins.includes(localStorage.name)) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='deleteStory(\"" + window.location.href.split("?")[1] + "\"); window.location.href = \"index.html\"'>Delete</button>";
           }
           if(localStorage.name == snapshot.val().author) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary round-hover' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><div class='pencil-icon'><i></i></div></button>";

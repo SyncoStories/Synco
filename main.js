@@ -1,3 +1,18 @@
+//defining default search options
+var options = {
+  shouldSort: true,
+  threshold: 0.6,
+  location: 0,
+  distance: 100,
+  maxPatternLength: 32,
+  minMatchCharLength: 1,
+  keys: [
+    "data.title",
+    "data.author",
+    "data.keys"
+]
+};
+
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,

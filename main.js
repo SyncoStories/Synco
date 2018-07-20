@@ -17,7 +17,7 @@ function saveStory() {
     var storyRef = firebase.database().ref("stories/" + window.location.href.split("?")[1]);
     storyRef.child("title").set(document.getElementById("story-title-input").value);
     storyRef.child("author").set(localStorage.name);
-    storyRef.child("content").set(document.getElementById("story-text-area").innerText);
+    storyRef.child("content").set(document.getElementById("story-text-area").innerHTML);
     storyRef.child("tags").set(document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1));
   }
 }

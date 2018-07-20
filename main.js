@@ -56,8 +56,17 @@ function addTag() {
 }
 
 function searchStories(search) {
+  document.getElementById('story-cards').innerHTML = '';
   firebase.database().ref("stories").once("value",function(snapshot) {
-    return new Fuse(Object.keys(snapshot.val()).map(function(key) {return {data: snapshot.val()[key], key: key}}), options).search("sci-fi")
+    var stories = new Fuse(Object.keys(snapshot.val()).map(function(key) {return {data: snapshot.val()[key], key: key}}), options).search(search);
+    for(var i = 0; i < stories.length; i++) {
+      if (stories[i].data.public.likes == -1) {
+        var likeLikes = "Like"
+      } else {
+        var likeLikes = "Likes"
+      }
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' ' + likeLikes + '</p></span>';
+    }
   })
 }
 
@@ -97,7 +106,7 @@ if (!window.location.href.split("?")[1]) {
   firebase.database().ref("stories").orderByChild("public/likes").once("value", function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
-      if (storySnapshot.val().likes == -1) {
+      if (storySnapshot.val().public.likes == -1) {
         var likeLikes = "Like"
       } else {
         var likeLikes = "Likes"

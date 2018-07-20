@@ -55,6 +55,12 @@ function addTag() {
   }
 }
 
+function searchStories(search) {
+  firebase.database().ref("stories").once("value",function(snapshot) {
+    return new Fuse(Object.keys(snapshot.val()).map(function(key) {return {data: snapshot.val()[key], key: key}}), options).search("sci-fi")
+  })
+}
+
 function hideAllPages() {
   for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
     document.getElementsByClassName("page")[i].style.display = "none";

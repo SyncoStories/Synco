@@ -9,7 +9,7 @@ var options = {
   keys: [
     "data.title",
     "data.author",
-    "data.keys"
+    "data.tags"
 ]
 };
 

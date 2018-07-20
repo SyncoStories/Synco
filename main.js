@@ -71,9 +71,9 @@ function addTag() {
 }
 
 function searchStories(search) {
-  document.getElementById('story-cards').innerHTML = 'No Stories Matched Your Search';
   firebase.database().ref("stories").once("value",function(snapshot) {
     var stories = new Fuse(Object.keys(snapshot.val()).map(function(key) {return {data: snapshot.val()[key], key: key}}), options).search(search);
+    document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">No Stories Matched Your Search</h4>';
     for(var i = 0; i < stories.length; i++) {
       if (stories[i].data.public.likes == -1) {
         var likeLikes = "Like"

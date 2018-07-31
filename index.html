@@ -27,7 +27,7 @@
       <nav>
         <div class="nav-wrapper">
           <a href="https://synco.tk" class="brand-logo"> Synco </a>
-          <input id="nav-search" placeholder="Search" onchange="searchStories(this.value)">
+          <input id="nav-search" placeholder="Search" onchange="if(this.value !== '') {searchStories(this.value); this.style.width = '50%';} else {window.location.href = 'index.html'}">
           <p id="navbar-username" style="float:right"></p>
         </div>
       </nav>

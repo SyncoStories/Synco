@@ -51,7 +51,7 @@ br {
     text-decoration: none;
     font-family: sans-serif;
     font-size: 300%;
-    display: table-cell;
+    display: inline-block;
     vertical-align: middle;
     text-decoration: none;
     padding-left: 15px;
@@ -76,6 +76,24 @@ br {
 
 .nav-wrapper a:hover {
   text-decoration: underline;
+}
+
+.nav-wrapper #nav-search {
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  padding: 3px;
+  padding-left: 20px;
+  outline: none;
+  width: 0px;
+  color: gray;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+}
+
+.nav-wrapper #nav-search:focus {
+  border-radius: 10px;
+  width: 50%;
 }
 
 tag {

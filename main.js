@@ -70,7 +70,15 @@ function addTag() {
   }
 }
 
+function hideAllPages() {
+  for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
+    document.getElementsByClassName("page")[i].style.display = "none";
+  }
+}
+
 function searchStories(search) {
+  hideAllPages();
+  document.getElementById('main-page').style.display = 'block';
   document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">Loading . . .</h4>';
   firebase.database().ref("stories").once("value",function(snapshot) {
     var stories = new Fuse(Object.keys(snapshot.val()).map(function(key) {return {data: snapshot.val()[key], key: key}}), options).search(search);
@@ -88,12 +96,6 @@ function searchStories(search) {
       document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' ' + likeLikes + '</p></span>';
     }
   })
-}
-
-function hideAllPages() {
-  for (var i = 0; i < document.getElementsByClassName("page").length; i++) {
-    document.getElementsByClassName("page")[i].style.display = "none";
-  }
 }
 
 function editStory(storyId) {

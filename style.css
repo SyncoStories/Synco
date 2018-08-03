@@ -147,7 +147,11 @@ tag {
 
 .dropdown ul li {
   padding: 2px 5px;
-    color: gray;
+  color: gray;
+}
+
+.dropdown ul li a {
+  color: gray;
 }
 
 .dropdown ul li:hover {

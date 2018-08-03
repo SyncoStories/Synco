@@ -9,25 +9,6 @@
   };
   firebase.initializeApp(config);
 
-var stories = {
-  storiesValue: undefined,
-  listener: function() {},
-  get value() {
-    return this.storiesValue
-  },
-  set value(val) {
-    this.storiesValue = val;
-    this.listener();
-  },
-  addChangeListener: function(listener) {
-    this.listener = listener;
-  }
-}
-
-firebase.database().ref('stories').once("value", function(snapshot) {
-  stories.value = snapshot.val();
-});
-
 var user = firebase.auth().currentUser;
 
 function signup() {

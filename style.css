@@ -82,6 +82,14 @@ br {
   transition-duration: 1s;
 }
 
+.nav-wrapper #nav-search-handle {
+  width: 8px;
+  height: 15px;
+  display: inline-block;
+  background: white;
+  -webkit-transform: translateY(14px) translateX(-5px) rotate(-45deg);
+}
+
 .nav-wrapper #nav-search:focus {
   border-radius: 10px;
   width: 50%;

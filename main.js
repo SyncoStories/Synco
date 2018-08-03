@@ -127,7 +127,7 @@ if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
   stories.addChangeListener(function() {
     document.getElementById('story-cards').innerHTML = '';
-    for(var i = 0; i < stories.length; i++) {
+    for(var i = 0; i < Object.keys(stories).length; i++) {
       var storySnapshot = stories[Object.keys(stories)[i]]
       if (storySnapshot.val().public.likes == -1) {
         var likeLikes = "Like"

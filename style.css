@@ -68,16 +68,6 @@ br {
   vertical-align: middle;
 }
 
-.nav-wrapper a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-}
-
-.nav-wrapper a:hover {
-  text-decoration: underline;
-}
-
 .nav-wrapper #nav-search {
   border: none;
   border-radius: 20px;

@@ -125,17 +125,16 @@ function editStory(storyId) {
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
-  stories.addChangeListener(function() {
+  firebase.database().ref("stories").orderByChild("public/likes").once("value", function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
-    for(var i = 0; i < Object.keys(stories.value).length; i++) {
-      var storySnapshot = stories.value[Object.keys(stories.value)[i]]
+    snapshot.forEach(function(storySnapshot) {
       if (storySnapshot.val().public.likes == -1) {
         var likeLikes = "Like"
       } else {
         var likeLikes = "Likes"
       }
       document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' ' + likeLikes + '</p></span>';
-    }
+    });
   });
 } else {
   if (document.getElementById(window.location.href.split("?")[1] + "-page")) {

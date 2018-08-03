@@ -150,7 +150,7 @@ tag {
   position: absolute;
   overflow: hidden;
   -webkit-transition-duration: max-height 1s ease-in-out;
-  transition: max-height 1s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
   max-height: 0px;
 }
 

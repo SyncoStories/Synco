@@ -125,9 +125,9 @@ function editStory(storyId) {
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
-  firebase.database().ref("stories").orderByChild("public/likes").once("value", function(snapshot) {
+  stories.addChangeListener(function() {
     document.getElementById('story-cards').innerHTML = '';
-    snapshot.forEach(function(storySnapshot) {
+    stories.forEach(function(storySnapshot) {
       if (storySnapshot.val().public.likes == -1) {
         var likeLikes = "Like"
       } else {

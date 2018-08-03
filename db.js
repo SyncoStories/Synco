@@ -48,7 +48,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
     document.getElementById("navbar-username").innerHTML = "<div class='dropdown' style='float: right'><a class='toggle-dropdown'>" + user.email.replace("@fakeemail.com", "") + "</a><ul style='right: 0px; color: gray; max-height: 100px; margin: 20px 10px;'><li><a href='?edit'>Make a New Story</a></li><li><a onlick='signout()'>Logout</a></button>";
   } else {
-    document.getElementById("navbar-username").innerHTML = "<button class='btn-primary' style='background-color: red; margin: 0; font-size: 100%; color: white;'><a href=\"index.html?login\">Login</a></button> or <button class='btn-primary' style='background-color: red; margin: 0; font-size: 100%;'><a href=\"index.html?signup\">Signup</a></button>";
+    document.getElementById("navbar-username").innerHTML = "<button class='btn-primary' style='background-color: red; margin: 0; font-size: 100%;'><a href=\"index.html?login\" style='color: white'>Login</a></button> or <button class='btn-primary' style='background-color: red; margin: 0; font-size: 100%;'><a href=\"index.html?signup\" style='color: white'>Signup</a></button>";
   }
 });
 

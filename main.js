@@ -37,6 +37,10 @@ function saveStory() {
   }
 }
 
+function rateStory(storyId, starRating, rating, uid, displayName) {
+    firebase.database().ref('stories/' + uid + '/public/ratings/' + uid).set({starRating: starRating, rating: rating, displayName: displayName});
+}
+
 function getStoryInfo(storyId) {
   var toReturn;
   firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {

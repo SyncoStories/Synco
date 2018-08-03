@@ -1,13 +1,13 @@
 for (var i = 0; i < document.getElementsByClassName("dropdown").length; i++) {
   document.getElementsByClassName("dropdown")[i].onclick = function() {
-    this.getElementsByTagName("ul")[0].style.maxHeight = '100px';
+    this.getElementsByTagName("ul")[0].style.maxHeight = '50px';
   }
 }
 
 document.addEventListener("DOMNodeInserted", function(e) {
   if(e.target.className == 'dropdown') {
     e.target.onclick = function() {
-      this.getElementsByTagName("ul")[0].style.maxHeight = '100px';
+      this.getElementsByTagName("ul")[0].style.maxHeight = '50px';
     }
   }
 });

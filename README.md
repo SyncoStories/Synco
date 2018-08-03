@@ -13,7 +13,7 @@ Just go onto [https://synco.tk](https://synco.tk) and sign up. It is free and ea
 - [x] Admin Accounts
 - [ ] Story Rating
 - [ ] Age Appropriate Reccomendations
-- [ ] Searching
+- [x] Searching
 - [ ] Advanced Profiles
 
 #### Almost at Beta!

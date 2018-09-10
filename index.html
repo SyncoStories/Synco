@@ -44,7 +44,7 @@
         <br>
         <input id="signin-password" class="inp-primary" type="password" placeholder="Password">
         <br>
-        <button onclick="signin()" class="btn-primary" style='background-color: red;'>
+        <button onclick="firebase.auth().signInWithEmailAndPassword(document.getElementById('signin-uname').innerHTML + '@fakeemail.com', document.getElementById('signin-password'))" class="btn-primary" style='background-color: red;'>
            <a> Sign In </a>
           </button>
       </center>

@@ -1,9 +1,12 @@
 var user = firebase.auth().currentUser;
 
-if(user !== null) {
+if(user) {
+  document.getElementById('navbar-uname-dropdown').innerHTML = user.email.replace('@fakeemail.com', '');
   document.getElementById('navbar-uname-dropdown').style.display = 'inline-block';
+  document.getElementById('navbar-login-signup').style.display = 'none';
 } else {
   document.getElementById('navbar-login-signup').style.display = 'inline-block';
+  document.getElementById('navbar-uname-dropdown').style.display = 'none';
 }
 
 function login() {

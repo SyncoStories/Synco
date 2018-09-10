@@ -11,7 +11,7 @@ function login() {
 }
 
 function logout() {
-  firebase.auth.logout().then(function() {
+  firebase.auth().logout().then(function() {
     window.location.href = '/';
   }).catch(function(error) {
     throw error;

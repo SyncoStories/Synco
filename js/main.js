@@ -13,8 +13,6 @@ var options = {
 ]
 };
 
-var queryVariable = window.location.href.split('?')[1];
-
 function createNewStory() {
   var newStory = db.collection('stories').add({
     title: document.getElementById("story-title-input").value,
@@ -71,9 +69,9 @@ function searchStories(search) {
 }
 
 hideAllPages();
-if(queryVariable) {
- if(document.getElementById(queryVariable + "-page")) {
-   document.getElementById(queryVariable + "-page").style.display = 'block';
+if(window.location.href.split('?')[1]) {
+ if(document.getElementById(window.location.href.split('?')[1] + "-page")) {
+   document.getElementById(window.location.href.split('?')[1] + "-page").style.display = 'block';
  } else {
    
  }

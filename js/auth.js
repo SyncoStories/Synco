@@ -20,3 +20,11 @@ function signup() {
     alert(error);
   });
 }
+
+firebase.auth().onAuthStateChanged(function(userInfo) {
+  if (userInfo) {
+    user = userInfo;
+  } else {
+    user = null;
+  }
+});

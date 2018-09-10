@@ -44,17 +44,21 @@ br {
     background-color: #ff6161;
     width: 100%;
     display: table;
+    position: relative;
+    padding: 10px;
 }
 
-.nav-wrapper .brand-logo {
+.nav-wrapper * {
     color: white;
     text-decoration: none;
     font-family: sans-serif;
-    font-size: 300%;
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
-    padding-left: 15px;
+}
+
+.nav-wrapper .brand-logo {
+  font-size: 300%;
 }
 
 .nav-wrapper .brand-logo:hover {
@@ -92,22 +96,7 @@ br {
 
 .nav-wrapper #nav-search:focus {
   border-radius: 10px;
-  width: 50%;
-}
-
-tag {
-  background: lightgray;
-  color: gray;
-  padding: 2px 10px;
-  margin: 2px;
-  border-radius: 20px;
-  float: left;
-  transition-duration: 1s;
-}
-
-#tags-input {
-  font-size: 15px;
-  padding: 1px;
+  width: 40%;
 }
 
 #story-page {

@@ -1,5 +1,11 @@
 var user = firebase.auth().currentUser;
 
+if(user !== null) {
+  document.getElementById('navbar-uname-dropdown').style.display = 'block';
+} else {
+  document.getElementById('navbar-login-signup').style.display = 'block';
+}
+
 function login() {
   firebase.auth().signInWithEmailAndPassword(document.getElementById('signin-uname').value + '@fakeemail.com', document.getElementById('signin-password').value).then(function() {
     console.log('Successfuly logged in!');

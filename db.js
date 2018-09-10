@@ -16,6 +16,3 @@ var db = firebase.firestore();
 db.settings({
   timestampsInSnapshots: true
 });
-
-//Set up ayth user
-var user = firebase.auth().currentUser;

@@ -10,6 +10,14 @@ function login() {
   });
 }
 
+function logout() {
+  firebase.auth.logout().then(function() {
+    window.location.href = '/';
+  }).catch(function(error) {
+    throw error;
+    console.log(error);
+  });
+}
 
 function signup() {
   firebase.auth().creteUserWithEmailAndPassword(document.getElementById('new-account-uname').value + '@fakeemail.com', document.getElementById('new-user-password').value).then(function() {

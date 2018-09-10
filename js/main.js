@@ -63,8 +63,7 @@ function searchStories(search) {
      } else {
        document.getElementById('story-cards').innerHTML = '';
      }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' ' + likeLikes + '</p></span>';
-    }
+     document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' ' + likeLikes + '</p></span>';
   });
 }
 

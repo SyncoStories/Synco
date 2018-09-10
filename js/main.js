@@ -13,6 +13,8 @@ var options = {
 ]
 };
 
+var queryVariable = window.location.href.split('?')[1];
+
 function createNewStory() {
   var newStory = db.collection('stories').add({
     title: document.getElementById("story-title-input").value,
@@ -66,4 +68,15 @@ function searchStories(search) {
       document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' ' + likeLikes + '</p></span>';
     }
   });
+}
+
+hideAllPages();
+if(queryVariable) {
+ if(document.getElementById(queryVariable + "-page")) {
+   document.getElementById(queryVariable + "-page").style.display = 'block';
+ } else {
+   
+ }
+} else {
+  
 }

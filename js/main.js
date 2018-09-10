@@ -14,64 +14,36 @@ var options = {
 };
 
 function createNewStory() {
-  var newStory = firebase.database().ref().child("stories").push({
+  var newStory = db.collection('stories').add({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
     uid: firebase.auth().currentUser.uid,
-    content: document.getElementById("story-text-area").innerHTML,
-    tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1),
-    public: {
-      likes: 0,
-    }
+    content: document.getElementById("story-text-area").innerHTML
   });
   window.location.href = "?" + newStory.key;
 }
 
 function saveStory() {
   if (window.location.href.split("?")[1]) {
-    var storyRef = firebase.database().ref("stories/" + window.location.href.split("?")[1]);
-    storyRef.child("title").set(document.getElementById("story-title-input").value);
-    storyRef.child("author").set(localStorage.name);
-    storyRef.child("content").set(document.getElementById("story-text-area").innerHTML);
-    storyRef.child("tags").set(document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1));
+    db.collection('stories').doc(window.location.href.split("?")[1]).update({
+      title: document.getElementById("story-title-input").value,
+      author: user.email.replace('@fakeemail.com', ''),
+      content: document.getElementById("story-text-area").innerHTML
+    }).then(function() {
+      console.log('Done Saving');
+    }).catch(function(error) {
+      throw error;
+      alert(error);
+    });
   }
-}
-
-function rateStory(storyId, starRating, rating, uid, displayName) {
-    firebase.database().ref('stories/' + uid + '/public/ratings/' + uid).set({starRating: starRating, rating: rating, displayName: displayName});
-}
-
-function getStoryInfo(storyId) {
-  var toReturn;
-  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
-    toReturn = snapshot.val();
-  });
-  return toReturn;
 }
 
 function deleteStory(storyId) {
-  firebase.database().ref("stories/" + storyId).remove().then(function() {
+  db.collection('stories').doc(storyId).remove().then(function() {
     alert("The story has been sucessfully deleted!");
   }).catch(function(error) {
     alert(error);
-  })
-}
-
-function likeStory(storyId) {
-  firebase.database().ref("stories/" + storyId + "/public/likes").transaction(function(likes) {
-    if (likes) {
-      return likes - 1
-    } else {
-      return -1
-    }
   });
-}
-
-function addTag() {
-  if (document.getElementById("tags-input").value !== '') {
-    document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + document.getElementById("tags-input").value + '</tag>';
-    document.getElementById("tags-input").value = '';
-  }
 }
 
 function hideAllPages() {
@@ -84,7 +56,7 @@ function searchStories(search) {
   hideAllPages();
   document.getElementById('main-page').style.display = 'block';
   document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">Loading . . .</h4>';
-  firebase.database().ref("stories").once("value",function(snapshot) {
+  db.collection('stories').get(function(snapshot) {
     var stories = new Fuse(Object.keys(snapshot.val()).map(function(key) {return {data: snapshot.val()[key], key: key}}), options).search(search);
     if(stories.length == 0) {
       document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">No Stories Matched Your Search</h4>';
@@ -129,33 +101,14 @@ function editStory(storyId) {
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
-  firebase.database().ref("stories").orderByChild("public/likes").once("value", function(snapshot) {
-    document.getElementById('story-cards').innerHTML = '';
-    snapshot.forEach(function(storySnapshot) {
-      if (storySnapshot.val().public.likes == -1) {
-        var likeLikes = "Like"
-      } else {
-        var likeLikes = "Likes"
-      }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' ' + likeLikes + '</p></span>';
-    });
-  });
 } else {
   if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
   } else {
-    firebase.database().ref("stories/" + window.location.href.split("?")[1]).once("value", function(snapshot) {
+    db.collection('stories').doc(window.location.href.split('?')[1]).get(function(snapshot) {
       if (snapshot.val()) {
           document.getElementById("story-page").style.display = "block";
-          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><div>" + snapshot.val().content + "</div>";
-          if (snapshot.val().tags) {
-            for (var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("story-page").innerHTML += "<tag>" + snapshot.val().tags[i] + "</tag>";
-            }
-          }
-          if (localStorage.name !== "null") {
-            document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
-          }
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center><div>" + snapshot.data().content + "</div>";
           if(localStorage.name == snapshot.val().author) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary round-hover' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><div class='pencil-icon'><i></i></div></button>";
           }

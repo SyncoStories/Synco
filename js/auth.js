@@ -32,7 +32,7 @@ function signup() {
 firebase.auth().onAuthStateChanged(function(userInfo) {
   if (userInfo) {
     user = userInfo;
-    document.getElementById('navbar-uname-dropdown').innerHTML = user.email.replace('@fakeemail.com', '');
+    document.getElementById('navbar-uname').innerHTML = user.email.replace('@fakeemail.com', '');
     document.getElementById('navbar-uname-dropdown').style.display = 'inline-block';
     document.getElementById('navbar-login-signup').style.display = 'none';
   } else {

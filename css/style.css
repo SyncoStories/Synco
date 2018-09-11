@@ -46,6 +46,7 @@ br {
     display: table;
     position: relative;
     padding: 10px;
+    box-sizing: border-box;
 }
 
 .nav-wrapper * {

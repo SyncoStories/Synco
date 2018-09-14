@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title> Synco </title>
+    
+    <link rel="shortcut icon" href="Logo2.0 (2).PNG">
+    
+    <!--Meta Info-->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Synco is the ideal website for aspiring authors trying to get their ideas out there, and anyone else who enjoys a good short story!">
+    <meta name="keywords" content="Short Stories,author,fan-fiction,fan fiction,books,stories,github,synco,free">
+    
+    <!--Website CSS-->
+    <link rel="stylesheet" href="style.css">
+    
+    <!--Prealge Icons CSS (simple library created by an owner of synco)-->
+    <link rel="stylesheet" type="text/css" href="https://prealge.github.io/prealge-icons/style.css">
+    
+  </head>
+  
+  <body>
+     
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper">
+          <a href="https://synco.tk" class="brand-logo"> Synco </a>
+          <input id="nav-search" placeholder="Search" onchange="if(this.value !== '') {searchStories(this.value); this.style.width = '50%';} else {window.location.href = 'index.html'}"><div id="nav-search-handle"></div>
+           <p id="navbar-username" style="float:right"></p>
+        </div>
+      </nav>
+    </div>
+   <center>
+    <div id="main-page" class="page">
+      
+      <div id="story-cards">
+      </div>
+      
+    </div>
+    </center>
+    
+    <div id="story-page" class="page">
+      
+    </div>
+    
+    <div id="story-404-page" class="page">
+      <center>
+        <h1><b>404</b></h1>
+        <h6>There does not seem to be a page here</h6>
+      </center>
+    </div>
+    
+      <div id="login-page" class="page">
+        <center>
+          <input id="signin-uname" class="inp-primary" placeholder="Username">
+          <br>
+          <input id="signin-password" class="inp-primary" type="password" placeholder="Password">
+          <br>
+          <button onclick="signin()" class="btn-primary" style='background-color: red;'>
+           <a> Sign In </a>
+          </button>
+        </center>
+      </div>
+
+      <div id="signup-page" class="page">
+        <center>
+          <input id="new-account-uname" class="inp-primary" placeholder="Username">
+          <br>
+          <input id="new-account-pword" class="inp-primary" type="password" placeholder="Password">
+          <br>
+          <p>By signing up to Synco, you agree to our <a href="https://synco.tk/TermsAndConditions.txt">TERMS AND CONDITIONS</a>.</p>
+          <button onclick="signup()" class="btn-primary" style='background-color: red;'>
+            <a> Sign Up </a>
+          </button>
+        </center>
+      </div>
+    
+    
+    <div id="edit-page" class="page">
+      <!--<div id="vertical-dot-menu" onclick="document.getElementById('story-edit-menu').style.display = 'inline-block'" onmouseover="mouseOverStoryEditMenu = true" onmouseout="mouseOverStoryEditMenu = undefined">
+        <center>
+          <div></div>
+          <div></div>
+          <div></div>
+        </center>
+      </div>
+      <ul id="story-edit-menu" onmouseover="mouseOverStoryEditMenu = true" onmouseout="mouseOverStoryEditMenu = undefined">
+        <li onclick="saveStory()">Save</li>
+        <li onclick="deleteStory(window.location.href.split('?')[1])">Delete</li>
+      </ul>-->
+      <input id="story-title-input" class="inp-primary" style="font-size: 30px;" placeholder="Untitled Story">
+      <br>
+      <div id="story-text-area" contenteditable></div>
+      <br>
+      <div id="tags"></div><input class="inp-primary" id="tags-input" onchange="addTag()" placeholder="Add Tags">
+      <br>
+      <button class='btn-primary round-hover' id='save-story-btn' onclick='createNewStory()' style='right: 5px'><div class='save-icon' style="--background-color: Tomato"><i></i></div></button>
+    </div>
+    
+    
+   
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.0.4/fuse.min.js"></script> 
+    <script src="db.js"></script>
+    <script src="main.js"></script>
+    <script src="style.js"></script>
+  </body>
+</html>

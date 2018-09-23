@@ -46,7 +46,7 @@ function signout() {
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
-    document.getElementById("navbar-username").innerHTML = "<div class='dropdown' style='float: right'><button class='btn-primary' style='background-color: white; margin: 0; font-size: 100%;'><span class='toggle-dropdown'>" + user.email.replace("@fakeemail.com", "") + "</span><button><ul style='right: 0px; color: gray; max-height: 100px; margin: 20px 10px;'><li onclick='window.location.href = \"?edit\"'>Make a New Story</li><li onclick='signout()'>Logout</li></ul>";
+    document.getElementById("navbar-username").innerHTML = "<button class='btn-primary dropdown' style='background-color: white; margin: 0; font-size: 100%;'><span class='toggle-dropdown'>" + user.email.replace("@fakeemail.com", "") + "</span></button><ul style='right: 0px; color: gray; max-height: 100px; margin: 20px 10px;'><li onclick='window.location.href = \"?edit\"'>Make a New Story</li><li onclick='signout()'>Logout</li></ul>";
   } else {
     document.getElementById("navbar-username").innerHTML = "<button class='btn-primary' style='background-color: white; margin: 0; font-size: 100%;'><a href=\"index.html?login\" style='color: tomato'>Login</a></button>  <button class='btn-primary' style='background-color: white; margin: 0; font-size: 100%;'><a href='index.html?signup' style='color: tomato'>Signup</a></button>";
   }

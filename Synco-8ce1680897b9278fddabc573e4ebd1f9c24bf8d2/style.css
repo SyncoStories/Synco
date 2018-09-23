@@ -19,7 +19,7 @@ br {
     height: 20%;
     min-height: 100px;
     min-width: 150px;
-    background-color: white;
+    background-color: style="background-color:#f5f5f5";
     color: Tomato;
     font-family: sans-serif;
     padding: 10px;
@@ -43,7 +43,7 @@ br {
 }
 
 .nav-wrapper {
-    background-color: #dd2c00;
+    background-color: tomato;
     width: 100%;
     display: table;
 }

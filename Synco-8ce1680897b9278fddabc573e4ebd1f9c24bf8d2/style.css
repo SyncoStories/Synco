@@ -12,6 +12,7 @@ br {
 }
 
 .card {
+    border-radius: 20px;
     display: inline-block;
     width: 75%;
     height: 20%;

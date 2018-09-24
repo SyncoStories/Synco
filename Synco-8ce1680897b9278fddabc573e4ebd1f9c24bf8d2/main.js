@@ -154,7 +154,7 @@ if (!window.location.href.split("?")[1]) {
             }
           }
           if (localStorage.name !== "null") {
-            document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'>Like</button>";
+            document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='material-icons'>thumb_up_alt</i>t</button>";
           }
           if(localStorage.name == snapshot.val().author) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary round-hover' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><div class='pencil-icon'><i></i></div></button>";

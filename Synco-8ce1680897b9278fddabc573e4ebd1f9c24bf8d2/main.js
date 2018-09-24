@@ -97,7 +97,7 @@ function searchStories(search) {
       } else {
         var likeLikes = "Likes"
       }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' ' + likeLikes + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' <i class="material-icons">thumb_up</i></p></span>';
     }
   })
 }
@@ -137,7 +137,7 @@ if (!window.location.href.split("?")[1]) {
       } else {
         var likeLikes = "Likes"
       }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' ' + likeLikes + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p>By ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' </p></span>';
     });
   });
 } else {
@@ -154,7 +154,7 @@ if (!window.location.href.split("?")[1]) {
             }
           }
           if (localStorage.name !== "null") {
-            document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='material-icons'>thumb_up_alt</i>t</button>";
+            document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='material-icons'>thumb_up</i>";
           }
           if(localStorage.name == snapshot.val().author) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary round-hover' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><div class='material-icons'>edit</div></button>";

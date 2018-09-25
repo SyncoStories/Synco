@@ -34,6 +34,7 @@ function saveStory() {
     storyRef.child("author").set(localStorage.name);
     storyRef.child("content").set(document.getElementById("story-text-area").innerHTML);
     storyRef.child("tags").set(document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1));
+    document.location.reload();
   }
 }
 

@@ -98,7 +98,7 @@ function searchStories(search) {
       } else {
         var likeLikes = "Likes"
       }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' <i class="material-icons">thumb_up</i></p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' <i class="fas fa-thumbs-up"></i></p></span>';
     }
   })
 }

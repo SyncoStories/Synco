@@ -127,6 +127,12 @@ function editStory(storyId) {
   }
 }
 
+function download(filename, text) {
+  var element = document.getElementById('Download');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+}
+download(storySnapshot.val().title + ".txt", snapshot.val().content);
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
@@ -158,7 +164,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i>";
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button><a class='btn-primary' id='Download' style='right: 5px;'><i class='fas fa-download'></i></a>";
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

@@ -164,7 +164,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i>";
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button> <a class='btn-primary' id='Download' style='right: 5px;' download='SyncoStory.txt' href='data:text/plain;charset=utf-8" + snapshot.val().content + "'><i class='fas fa-download'></i></a>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button> <a class='btn-primary' id='Download' style='right: 5px;' download='SyncoStory.txt' href='data:text/plain;charset=utf-8" + snapshot.val().content + "'><i class='fas fa-upload'></i></a>";
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

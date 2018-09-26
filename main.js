@@ -138,7 +138,7 @@ if (!window.location.href.split("?")[1]) {
       } else {
         var likeLikes = "Likes"
       }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' <i class="fas fa-thumbs-up"></i></p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.val().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.val().public.likes * -1 + '</p></span>';
     });
   });
 } else {

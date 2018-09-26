@@ -138,7 +138,7 @@ if (!window.location.href.split("?")[1]) {
       } else {
         var likeLikes = "Likes"
       }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' <i class="fas fa-thumbs-up"></i></p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.val().author + ' </p><p>' + storySnapshot.val().public.likes * -1 + ' <i class="fas fa-thumbs-up"></i></p></span>';
     });
   });
 } else {
@@ -158,7 +158,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i>";
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary round-hover' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

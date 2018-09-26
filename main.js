@@ -127,11 +127,11 @@ function editStory(storyId) {
   }
 }
 
-function download(filename, text) {
-  var element = document.getElementById('Download');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
-}
+//function download(filename, text) {
+//  var element = document.getElementById('Download');
+//  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+//  element.setAttribute('download', filename);
+//}
 download(storySnapshot.val().title + ".txt", snapshot.val().content);
 hideAllPages();
 if (!window.location.href.split("?")[1]) {

@@ -127,11 +127,6 @@ function editStory(storyId) {
   }
 }
 
-function download(filename, text) {
-  var element = document.getElementById('Download');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', filename);
-}
 
 hideAllPages();
 if (!window.location.href.split("?")[1]) {

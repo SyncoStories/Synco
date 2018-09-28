@@ -148,7 +148,8 @@ if (!window.location.href.split("?")[1]) {
   } else {
     firebase.database().ref("stories/" + window.location.href.split("?")[1]).once("value", function(snapshot) {
       if (snapshot.val()) {
-          var ValContent = snapshot.val().content
+          var ValContent = snapshot.val().content;
+          var ValTitle = snapshot.val().title;
           document.getElementById("story-page").style.display = "block";
           document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><div>" + snapshot.val().content + "</div>";
           if (snapshot.val().tags) {
@@ -160,7 +161,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i>";
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button> <a class='btn-primary' id='Download' style='right: 5px;' download='SyncoStory.txt' href='data:text/plain;charset=utf-8," + ValContent + "'><i class='fas fa-upload'></i></a>";
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'><i class='fas fa-upload'></i></a>";
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

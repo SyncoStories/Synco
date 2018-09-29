@@ -148,8 +148,8 @@ if (!window.location.href.split("?")[1]) {
   } else {
     firebase.database().ref("stories/" + window.location.href.split("?")[1]).once("value", function(snapshot) {
       if (snapshot.val()) {
-          var ValContent = snapshot.val().content;
-          var ValTitle = snapshot.val().title;
+          //var ValContent = snapshot.val().content;
+          //var ValTitle = snapshot.val().title;
           document.getElementById("story-page").style.display = "block";
           document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><div>" + snapshot.val().content + "</div>";
           if (snapshot.val().tags) {

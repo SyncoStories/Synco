@@ -46,6 +46,7 @@ br {
     background-color: tomato;
     width: 100%;
     display: table;
+    position: fixed;
 }
 
 .nav-wrapper .brand-logo {

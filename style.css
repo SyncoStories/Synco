@@ -190,6 +190,10 @@ tag {
   border-bottom: 1.5px solid #ff6161;
 }
 
+.btn-fixed {
+   position: fixed;
+}
+
 .btn-primary {
   outline: none;
   border: none;

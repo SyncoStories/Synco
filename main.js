@@ -24,8 +24,9 @@ function createNewStory() {
       likes: 0,
     }
   });
-  window.location.href = "?" + newStory.key;
+  
   document.getElementById("editBtn").click();
+  window.location.href = "?" + newStory.key;
 }
 
 function saveStory() {

@@ -25,7 +25,7 @@ function createNewStory() {
     }
   });
   window.location.href = "?" + newStory.key;
-  document.getElementById("editBtn").click;
+  document.getElementById("editBtn").click();
 }
 
 function saveStory() {

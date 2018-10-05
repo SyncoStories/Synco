@@ -25,6 +25,7 @@ function createNewStory() {
     }
   });
   window.location.href = "?" + newStory.key;
+  document.getElementById("editBTN").click;
 }
 
 function saveStory() {
@@ -162,7 +163,7 @@ if (!window.location.href.split("?")[1]) {
 
           }
           if(localStorage.name == snapshot.val().author) {
-            document.getElementById("story-page").innerHTML += "<button class='btn-primary' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";          
+            document.getElementById("story-page").innerHTML += "<button class='btn-primary' id='editBtn' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";          
           }
       } else {
         document.getElementById("story-404-page").style.display = "block";

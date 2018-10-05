@@ -13,6 +13,32 @@ var options = {
 ]
 };
 
+function editStory(storyId) {
+  hideAllPages();
+  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
+    if (snapshot.val().author == localStorage.name) {
+          document.getElementById("edit-page").style.display = "block";
+          document.getElementById("story-title-input").value = snapshot.val().title;
+          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          document.getElementById("tags").innerHTML = "";
+          if (snapshot.val().tags) {
+            for (var i = 0; i < snapshot.val().tags.length; i++) {
+              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
+            }
+         }
+       document.getElementById("save-story-btn").onclick = saveStory;
+    }
+  });
+  document.getElementById("story-text-area").onkeydown = function(e) {
+    if(e.keyCode == 9) {
+      document.execCommand("insertHTML", false, " ");
+      return false;
+    }
+  }
+}
+
+
+
 function createNewStory() {
   var newStory = firebase.database().ref().child("stories").push({
     title: document.getElementById("story-title-input").value,
@@ -24,9 +50,9 @@ function createNewStory() {
       likes: 0,
     }
   });
-  
-  document.getElementById("editBtn").click();
+ 
   window.location.href = "?" + newStory.key;
+  editStory(window.location.href.split("?")[1]);
 }
 
 function saveStory() {
@@ -103,30 +129,6 @@ function searchStories(search) {
       document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' <i class="fas fa-thumbs-up"></i></p></span>';
     }
   })
-}
-
-function editStory(storyId) {
-  hideAllPages();
-  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
-    if (snapshot.val().author == localStorage.name) {
-          document.getElementById("edit-page").style.display = "block";
-          document.getElementById("story-title-input").value = snapshot.val().title;
-          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
-          document.getElementById("tags").innerHTML = "";
-          if (snapshot.val().tags) {
-            for (var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
-            }
-         }
-       document.getElementById("save-story-btn").onclick = saveStory;
-    }
-  });
-  document.getElementById("story-text-area").onkeydown = function(e) {
-    if(e.keyCode == 9) {
-      document.execCommand("insertHTML", false, " ");
-      return false;
-    }
-  }
 }
 
 

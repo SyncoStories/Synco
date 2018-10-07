@@ -19,3 +19,18 @@ window.onclick = function(event) {
     }
   }
 }
+
+function searchbarSearch() {
+	var searchbar = document.getElementById('nav-search');
+  alert(searchbar.value);
+  if (searchbar.value !== '') {
+    searchStories(searchbar.value);
+    searchbar.style.width = '50%';
+  } else {
+    window.location.href = 'index.html'
+  }
+  if(document.getElementsByClassName('navbar')[0].style.height == '100%') {
+  	document.getElementsByClassName('navbar')[0].style.height = '10%';
+    alert('ti');
+  }
+}

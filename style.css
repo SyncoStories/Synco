@@ -1,78 +1,88 @@
 ::selection {
-    color: white;
-    background-color: red;
+  color: white;
+  background-color: red;
 }
 
 br {
-    user-select: none;
+  user-select: none;
+}
+
+a {
+  color: #4fbbec;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .page {
-    display: none;
+  display: none;
 }
 
 .card {
-    border-style: solid;
-    border-radius: 20px;
-    display: inline-block;
-    width: 75%;
-    height: 20%;
-    min-height: 100px;
-    min-width: 150px;
-    background-color: style="background-color:#f5f5f5";
-    color: Tomato;
-    font-family: sans-serif;
-    padding: 10px;
-    margin: 10px;
-    box-shadow: 1px 1px 10px #b9b9b9;
-    -webkit-transition: box-shadow 0.5s;
-    transition: box-shadow 0.5s;
+  border-style: solid;
+  border-radius: 20px;
+  display: inline-block;
+  width: 75%;
+  height: 20%;
+  min-height: 100px;
+  min-width: 150px;
+  background-color: #f5f5f5;
+  color: Tomato;
+  font-family: sans-serif;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 1px 1px 10px #b9b9b9;
+  -webkit-transition: box-shadow 0.5s;
+  transition: box-shadow 0.5s;
 }
 
 .card:hover {
-    box-shadow: 3px 3px 10px #b9b9b9;
+  box-shadow: 3px 3px 10px #b9b9b9;
 }
 
 .card-title {
-    font-size: 250%;
+  font-size: 250%;
 }
 
 .card p {
-    color: grey;
-    font-size: 180%;
+  color: grey;
+  font-size: 180%;
 }
 
-.nav-wrapper {
-    background-color: tomato;
-    width: 100%;
-    display: table;
-    position: fixed;
+.navbar {
+  position: absolute;
+  background-color: tomato;
+  width: 100%;
+  display: table;
 }
 
-.nav-wrapper .brand-logo {
-    color: white;
-    text-decoration: none;
-    font-family: sans-serif;
-    font-size: 300%;
-    display: inline-block;
-    vertical-align: middle;
-    text-decoration: none;
-    padding-left: 15px;
+.navbar .logo {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 300%;
+  text-decoration: none;
+  padding-left: 15px;
 }
 
-.nav-wrapper .brand-logo:hover {
-    text-decoration: none;
+.navbar .logo:hover {
+  text-decoration: none;
 }
 
-.nav-wrapper p {
+.navbar p {
   color: white;
   padding-right: 30px;
   display: table-cell;
   vertical-align: middle;
 }
 
-.nav-wrapper #nav-search {
-  border: none;
+.navbar #nav-search {
+  border: 1px solid white;
+  background-color: Tomato;
   border-radius: 20px;
   font-size: 15px;
   padding: 3px;
@@ -83,18 +93,13 @@ br {
   margin-left: 7px;
   -webkit-transition-duration: 1s;
   transition-duration: 1s;
+  display: table-cell;
+  vertical-align: middle;
 }
 
-.nav-wrapper #nav-search-handle {
-  width: 8px;
-  height: 15px;
-  display: inline-block;
-  background: white;
-  -webkit-transform: translateY(14px) translateX(-5px) rotate(-45deg);
-}
-
-.nav-wrapper #nav-search:focus {
-  border-radius: 10px;
+.navbar #nav-search:focus {
+  background-color: white;
+  border-radius: 5px;
   width: 50%;
 }
 
@@ -122,10 +127,10 @@ tag {
 }
 
 #story-page p {
-   text-align: left;
-   outline: none;
-   border: 1px solid transparent;
-   padding: 2%;
+  text-align: left;
+  outline: none;
+  border: 1px solid transparent;
+  padding: 2%;
 }
 
 #edit-page {
@@ -154,7 +159,7 @@ tag {
   overflow: hidden;
   -webkit-transition-duration: max-height 1s ease-in-out;
   transition: max-height 0.5s ease-in-out;
-  max-height: 0;
+  max-height: 0px;
 }
 
 .dropdown ul li {
@@ -170,11 +175,10 @@ tag {
   background-color: #f9f9f9;
 }
 
-
 .inp-primary {
   outline: none;
   border: none;
-  border-readius: none;
+  border-radius: none;
   border-bottom: 1.5px solid lightgray;
   -webkit-transition: border-bottom 0.5s;
   transition: border-bottom 1s;
@@ -188,10 +192,6 @@ tag {
 
 .inp-primary:focus {
   border-bottom: 1.5px solid #ff6161;
-}
-
-.fixed {
-   position: fixed;
 }
 
 .btn-primary {
@@ -216,23 +216,24 @@ tag {
 }
 
 .round-hover {
-    border-radius: 50%;
-    position: fixed;
-    margin: 5px;
-    bottom: 5px;
-    box-shadow: 3px 3px 10px gray;
-    float: right;
+  border-radius: 50%;
+  position: fixed;
+  margin: 5px;
+  bottom: 5px;
+  box-shadow: 3px 3px 10px gray;
+  float: right;
 }
 
 button a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
+
 body {
-    margin: 0;
+  margin: 0;
 }
 
 * {

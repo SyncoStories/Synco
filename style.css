@@ -80,6 +80,10 @@ a:hover {
   vertical-align: middle;
 }
 
+.navbar a {
+  color: white;
+}
+
 .navbar #nav-search {
   border: 1px solid white;
   background-color: Tomato;

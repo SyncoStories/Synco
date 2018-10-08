@@ -64,7 +64,7 @@ function saveStory() {
       author: user.displayName,
       content: document.getElementById("story-text-area").innerHTML,
       tags: document.getElementById("tags").innerHTML.split(",")
-    }
+    });
     document.location.reload();
   }
 }

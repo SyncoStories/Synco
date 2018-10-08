@@ -17,6 +17,7 @@ db.settings({
 });
 
 var user = firebase.auth().currentUser;
+user.displayName = user.email.replace("@fakeemail.com", "");
 
 function signup() {
   var newUsername = document.getElementById("new-account-uname").value;
@@ -30,6 +31,7 @@ function signup() {
     alert(error)
   });
   user = firebase.auth().currentUser;
+  user.displayName = user.email.replace("@fakeemail.com", "");
 }
 
 function signin() {
@@ -37,6 +39,7 @@ function signin() {
   var password = document.getElementById("signin-password").value;
   firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).then(function() {
     user = firebase.auth().currentUser;
+    user.displayName = user.email.replace("@fakeemail.com", "");
     window.location.href = "index.html";
   }).catch(function(error) {
     alert(error);

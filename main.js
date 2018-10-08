@@ -42,7 +42,7 @@ function editStory(storyId) {
 function createNewStory() {
   db.collection("stories").add({
     title: "Untitled Story",
-    author: firebase.auth().currentUser.email.replace("@fakeemail.com", ""),
+    author: displayName,
     uid: firebase.auth().currentUser.uid,
     content: "",
     tags: [],
@@ -61,7 +61,7 @@ function saveStory() {
   if (window.location.href.split("?")[1]) {
     db.collection("stories").doc(window.location.href.split("?")[1]).update({
       title: document.getElementById("story-title-input").value,
-      author: user.displayName,
+      author: displayName,
       content: document.getElementById("story-text-area").innerHTML,
       tags: document.getElementById("tags").innerHTML.split(",")
     });
@@ -144,11 +144,11 @@ if (!window.location.href.split("?")[1]) {
               document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
             }
           }
-          if (localStorage.name !== "null" && snapshot.data().title !== "Synco: A Work in Progress") {
+          if (displayName !== "null" && snapshot.data().title !== "Synco: A Work in Progress") {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
 
           }
-          if(localStorage.name == snapshot.data().author) {
+          if(displayName == snapshot.data().author) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' id='editBtn' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";          
           }
       } else {

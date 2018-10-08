@@ -41,7 +41,7 @@ function editStory(storyId) {
 
 function createNewStory() {
   db.collection("stories").add({
-    title: "Untitled Story",
+    title: prompt("Title:", "Untitled Story"),
     author: localStorage.name,
     uid: firebase.auth().currentUser.uid,
     content: "",

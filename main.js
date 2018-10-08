@@ -76,7 +76,7 @@ function rateStory(storyId, rating) {
 function getStoryInfo(storyId) {
   var toReturn;
   db.collection("stories").doc(storyId).get().then(function(snapshot) {
-    toReturn = snapshot.val();
+    toReturn = snapshot.data();
   });
   return toReturn;
 }
@@ -102,7 +102,7 @@ function searchStories(search) {
   document.getElementById('main-page').style.display = 'block';
   document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">Loading . . .</h4>';
   firebase.database().ref("stories").once("value",function(snapshot) {
-    var stories = new Fuse(Object.keys(snapshot.val()).map(function(key) {return {data: snapshot.val()[key], key: key}}), options).search(search);
+    var stories = new Fuse(Object.keys(snapshot.data()).map(function(key) {return {data: snapshot.data()[key], key: key}}), options).search(search);
     if(stories.length == 0) {
       document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">No Stories Matched Your Search</h4>';
     } else {
@@ -133,22 +133,22 @@ if (!window.location.href.split("?")[1]) {
   if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
   } else {
-    firebase.database().ref("stories/" + window.location.href.split("?")[1]).once("value", function(snapshot) {
-      if (snapshot.val()) {
-          var ValContent = snapshot.val().content;
-          var ValTitle = snapshot.val().title;
+    db.collection("stories").doc(window.location.href.split("?")[1]).get().then(function(snapshot) {
+      if (snapshot.data()) {
+          var ValContent = snapshot.data().content;
+          var ValTitle = snapshot.data().title;
           document.getElementById("story-page").style.display = "block";
-          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.val().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><div>" + snapshot.val().content + "</div>";
-          if (snapshot.val().tags) {
-            for (var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("story-page").innerHTML += "<tag>" + snapshot.val().tags[i] + "</tag>";
+          document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.val().author + "</h5></center><div>" + snapshot.val().content + "</div>";
+          if (snapshot.data().tags) {
+            for (var i = 0; i < snapshot.data().tags.length; i++) {
+              document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
             }
           }
-          if (localStorage.name !== "null" && snapshot.val().title !== "Synco: A Work in Progress") {
+          if (localStorage.name !== "null" && snapshot.data().title !== "Synco: A Work in Progress") {
             document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
 
           }
-          if(localStorage.name == snapshot.val().author) {
+          if(localStorage.name == snapshot.data().author) {
             document.getElementById("story-page").innerHTML += "<button class='btn-primary' id='editBtn' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";          
           }
       } else {

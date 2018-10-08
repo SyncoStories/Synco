@@ -17,7 +17,6 @@ db.settings({
 });
 
 var user = firebase.auth().currentUser;
-user.displayName = user.email.replace("@fakeemail.com", "");
 
 function signup() {
   var newUsername = document.getElementById("new-account-uname").value;
@@ -31,7 +30,6 @@ function signup() {
     alert(error)
   });
   user = firebase.auth().currentUser;
-  user.displayName = user.email.replace("@fakeemail.com", "");
 }
 
 function signin() {
@@ -39,7 +37,6 @@ function signin() {
   var password = document.getElementById("signin-password").value;
   firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).then(function() {
     user = firebase.auth().currentUser;
-    user.displayName = user.email.replace("@fakeemail.com", "");
     window.location.href = "index.html";
   }).catch(function(error) {
     alert(error);
@@ -56,8 +53,10 @@ function signout() {
 
 firebase.auth().onAuthStateChanged(function(user) {
   if(user) {
-     document.getElementById("navbar-username").innerHTML = "<div class='dropdown' style='float: right'><a class='toggle-dropdown'>" + user.email.replace("@fakeemail.com", "") + "</a><ul style='right: 0px; color: gray; max-height: 100px; margin: 20px 10px;'><li onclick='createNewStory();'>Make a New Story</li><li onclick='signout()'>Logout</li></ul>";  
+    document.getElementById("navbar-username").innerHTML = "<div class='dropdown' style='float: right'><a class='toggle-dropdown'>" + user.email.replace("@fakeemail.com", "") + "</a><ul style='right: 0px; color: gray; max-height: 100px; margin: 20px 10px;'><li onclick='createNewStory();'>Make a New Story</li><li onclick='signout()'>Logout</li></ul>";  
+    var displayName = user.email.split("@")[0];
   } else {
     document.getElementById("navbar-username").innerHTML = "<button class='btn-primary' style='background-color: white; margin: 0; font-size: 100%;'><a href=\"index.html?login\" style='color: tomato'>Login</a></button>  <button class='btn-primary' style='background-color: white; margin: 0; font-size: 100%;'><a href='index.html?signup' style='color: tomato'>Signup</a></button>";
+    var displayName = "";
   }
 });

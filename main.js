@@ -21,7 +21,7 @@ function editStory(storyId) {
           document.getElementById("story-title-input").value = snapshot.data().title;
           document.getElementById("story-text-area").innerHTML = snapshot.data().content;
           document.getElementById("tags-input").value = snapshot.data().tags;
-       document.getElementById("save-story-btn").onclick = saveStory;
+          document.getElementById("save-story-btn").onclick = saveStory;
     }
   });
   document.getElementById("story-text-area").onkeydown = function(e) {
@@ -39,7 +39,7 @@ function createNewStory() {
       title: document.getElementById("story-title-input").value,
       author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
-      tags: document.getElementById("tags-input").innerHTML.split(",")
+      tags: document.getElementById("tags-input").value.split(",")
     }).then(function(docRef) {
     window.location.href = "?" + docRef.id;
   }).catch(function(error) {
@@ -54,7 +54,7 @@ function saveStory() {
       title: document.getElementById("story-title-input").value,
       author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
-      tags: document.getElementById("tags-input").innerHTML.split(",")
+      tags: document.getElementById("tags-input").value.split(",")
     });
     document.location.reload();
   }

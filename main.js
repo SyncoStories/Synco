@@ -123,14 +123,9 @@ function searchStories(search) {
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   document.getElementById("main-page").style.display = "block";
-  firebase.database().ref("stories").orderByChild("public/likes").once("value", function(snapshot) {
+  db.collection("stories").get().then(function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
-      if (storySnapshot.val().public.likes == -1) {
-        var likeLikes = "Like"
-      } else {
-        var likeLikes = "Likes"
-      }
       document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.key + '\'"><font class="card-title">' + storySnapshot.val().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.val().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.val().public.likes * -1 + '</p></span>';
     });
   });

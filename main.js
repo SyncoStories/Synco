@@ -40,7 +40,7 @@ function editStory(storyId) {
 
 
 function createNewStory() {
-  var newStory = firebase.database().ref().child("stories").push({
+  db.collection("stories").add({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
     uid: firebase.auth().currentUser.uid,
@@ -49,10 +49,12 @@ function createNewStory() {
     public: {
       likes: 0,
     }
+  }).then(function(docRef) {
+    window.location.href = "?" + docRef;
+  }).catch(function(error) {
+    alert(error);
+    throw error;
   });
- 
-  window.location.href = "?" + newStory.key;
-  editStory(window.location.href.split("?")[1]);
 }
 
 function saveStory() {

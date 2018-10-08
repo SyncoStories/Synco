@@ -36,15 +36,11 @@ function editStory(storyId) {
 
 function createNewStory() {
   db.collection("stories").add({
-    title: prompt("", "Untitled Story"),
-    author: localStorage.name,
-    uid: firebase.auth().currentUser.uid,
-    content: "",
-    tags: [],
-    public: {
-      likes: 0,
-    }
-  }).then(function(docRef) {
+      title: document.getElementById("story-title-input").value,
+      author: localStorage.name,
+      content: document.getElementById("story-text-area").innerHTML,
+      tags: document.getElementById("tags-input").innerHTML.split(",")
+    }).then(function(docRef) {
     window.location.href = "?" + docRef.id;
   }).catch(function(error) {
     alert(error);
@@ -56,8 +52,7 @@ function saveStory() {
   if (window.location.href.split("?")[1]) {
     db.collection("stories").doc(window.location.href.split("?")[1]).update({
       title: document.getElementById("story-title-input").value,
-      author: localStorage.name
-      ,
+      author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
       tags: document.getElementById("tags-input").innerHTML.split(",")
     });

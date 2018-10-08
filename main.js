@@ -16,14 +16,14 @@ var options = {
 function editStory(storyId) {
   hideAllPages();
   db.collection("stories").doc(storyId).get().then(function(snapshot) {
-    if (snapshot.val().author == localStorage.name) {
+    if (snapshot.data().author == localStorage.name) {
           document.getElementById("edit-page").style.display = "block";
-          document.getElementById("story-title-input").value = snapshot.val().title;
-          document.getElementById("story-text-area").innerHTML = snapshot.val().content;
+          document.getElementById("story-title-input").value = snapshot.data().title;
+          document.getElementById("story-text-area").innerHTML = snapshot.data().content;
           document.getElementById("tags").innerHTML = "";
-          if (snapshot.val().tags) {
+          if (snapshot.data().tags) {
             for (var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.val().tags[i] + '</tag>';
+              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.data().tags[i] + '</tag>';
             }
          }
        document.getElementById("save-story-btn").onclick = saveStory;

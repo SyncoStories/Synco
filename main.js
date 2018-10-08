@@ -41,11 +41,11 @@ function editStory(storyId) {
 
 function createNewStory() {
   db.collection("stories").add({
-    title: document.getElementById("story-title-input").value,
-    author: localStorage.name,
+    title: "Untitled Story",
+    author: firebase.auth().currentUser.email.replace("@fakeemail.com", ""),
     uid: firebase.auth().currentUser.uid,
-    content: document.getElementById("story-text-area").innerHTML,
-    tags: document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1),
+    content: "",
+    tags: [],
     public: {
       likes: 0,
     }

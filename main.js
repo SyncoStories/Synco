@@ -50,7 +50,7 @@ function createNewStory() {
       likes: 0,
     }
   }).then(function(docRef) {
-    window.location.href = "?" + docRef;
+    window.location.href = "?" + docRef.id;
   }).catch(function(error) {
     alert(error);
     throw error;

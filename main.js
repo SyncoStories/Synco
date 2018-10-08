@@ -15,7 +15,7 @@ var options = {
 
 function editStory(storyId) {
   hideAllPages();
-  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
+  db.collection("stories").doc(storyId).get().then(function(snapshot) {
     if (snapshot.val().author == localStorage.name) {
           document.getElementById("edit-page").style.display = "block";
           document.getElementById("story-title-input").value = snapshot.val().title;
@@ -59,49 +59,35 @@ function createNewStory() {
 
 function saveStory() {
   if (window.location.href.split("?")[1]) {
-    var storyRef = firebase.database().ref("stories/" + window.location.href.split("?")[1]);
-    storyRef.child("title").set(document.getElementById("story-title-input").value);
-    storyRef.child("author").set(localStorage.name);
-    storyRef.child("content").set(document.getElementById("story-text-area").innerHTML);
-    storyRef.child("tags").set(document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').slice(0, document.getElementById("tags").innerHTML.replace(/<tag onclick="this.parentElement.removeChild\(this\)">/g, '').split('</tag>').length - 1));
+    db.collection("stories").doc(window.location.href.split("?")[1]).update({
+      title: document.getElementById("story-title-input").value,
+      author: user.displayName,
+      content: document.getElementById("story-text-area").innerHTML,
+      tags: document.getElementById("tags").innerHTML.split(",")
+    }
     document.location.reload();
   }
 }
 
-function rateStory(storyId, starRating, rating, uid, displayName) {
-    firebase.database().ref('stories/' + uid + '/public/ratings/' + uid).set({starRating: starRating, rating: rating, displayName: displayName});
+function rateStory(storyId, rating) {
+  db.collection("stories").doc(storyId).collection("ratings").add(rating);
 }
 
 function getStoryInfo(storyId) {
   var toReturn;
-  firebase.database().ref("stories/" + storyId).once("value", function(snapshot) {
+  db.collection("stories").doc(storyId).get().then(function(snapshot) {
     toReturn = snapshot.val();
   });
   return toReturn;
 }
 
 function deleteStory(storyId) {
-  firebase.database().ref("stories/" + storyId).remove().then(function() {
-    alert("The story has been sucessfully deleted!");
-  }).catch(function(error) {
-    alert(error);
-  })
-}
-
-function likeStory(storyId) {
-  firebase.database().ref("stories/" + storyId + "/public/likes").transaction(function(likes) {
-    if (likes) {
-      return likes - 1
-    } else {
-      return -1
-    }
-  });
-}
-
-function addTag() {
-  if (document.getElementById("tags-input").value !== '') {
-    document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + document.getElementById("tags-input").value + '</tag>';
-    document.getElementById("tags-input").value = '';
+  if(confirm("Are you sure that you would like to delete this story? All data will be permanently lost.")) {
+    db.collection("stories").doc(storyId).delete().then(function() {
+      alert("The story has been successfully deleted!");
+    }).catch(function(error) {
+      alert(error);
+    });
   }
 }
 

@@ -1,13 +1,21 @@
 // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB3FDjwLrfTfSBWRo4-z_S5o9D1rFh8ulU",
-    authDomain: "synco-c1c21.firebaseapp.com",
-    databaseURL: "https://synco-c1c21.firebaseio.com",
-    projectId: "synco-c1c21",
-    storageBucket: "synco-c1c21.appspot.com",
-    messagingSenderId: "333441973483"
-  };
-  firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyB3FDjwLrfTfSBWRo4-z_S5o9D1rFh8ulU",
+  authDomain: "synco-c1c21.firebaseapp.com",
+  databaseURL: "https://synco-c1c21.firebaseio.com",
+  projectId: "synco-c1c21",
+  storageBucket: "synco-c1c21.appspot.com",
+  messagingSenderId: "333441973483"
+};
+firebase.initializeApp(config);
+
+// Initialize Cloud Firestore through Firebase
+var db = firebase.firestore();
+
+// Disable deprecated features
+db.settings({
+  timestampsInSnapshots: true
+});
 
 var user = firebase.auth().currentUser;
 
@@ -51,17 +59,3 @@ firebase.auth().onAuthStateChanged(function(user) {
     document.getElementById("navbar-username").innerHTML = "<button class='btn-primary' style='background-color: white; margin: 0; font-size: 100%;'><a href=\"index.html?login\" style='color: tomato'>Login</a></button>  <button class='btn-primary' style='background-color: white; margin: 0; font-size: 100%;'><a href='index.html?signup' style='color: tomato'>Signup</a></button>";
   }
 });
-
-
-setInterval(function() {
-  if(firebase.auth().currentUser) {
-    localStorage.name = firebase.auth().currentUser.email.replace("@fakeemail.com","");
-    localStorage.auth = btoa(firebase.auth().currentUser.email.replace("@fakeemail.com",""));
-    if(atob(localStorage.auth) !== localStorage.name) {
-      window.location.href = "about:blank";
-    }
-  } else {
-    localStorage.name = null;
-    localStorage.auth = null;
-  }
-}, 0);

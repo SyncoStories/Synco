@@ -20,12 +20,7 @@ function editStory(storyId) {
           document.getElementById("edit-page").style.display = "block";
           document.getElementById("story-title-input").value = snapshot.data().title;
           document.getElementById("story-text-area").innerHTML = snapshot.data().content;
-          document.getElementById("tags").innerHTML = "";
-          if (snapshot.data().tags) {
-            for (var i = 0; i < snapshot.val().tags.length; i++) {
-              document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + snapshot.data().tags[i] + '</tag>';
-            }
-         }
+          document.getElementById("tags-input").value = snapshot.data().tags;
        document.getElementById("save-story-btn").onclick = saveStory;
     }
   });
@@ -64,7 +59,7 @@ function saveStory() {
       author: localStorage.name
       ,
       content: document.getElementById("story-text-area").innerHTML,
-      tags: document.getElementById("tags").innerHTML.split(",")
+      tags: document.getElementById("tags-input").innerHTML.split(",")
     });
     document.location.reload();
   }

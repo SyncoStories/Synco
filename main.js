@@ -54,7 +54,8 @@ function saveStory() {
       title: document.getElementById("story-title-input").value,
       author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
-      //tags: document.getElementById("tags-input").value.split(",")
+      uid: firebase.auth().currentUser.uid,
+      tags: document.getElementById("tags-input").value.split(",")
     });
     document.location.reload();
   }

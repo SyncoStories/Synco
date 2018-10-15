@@ -39,7 +39,7 @@ function createNewStory() {
       title: document.getElementById("story-title-input").value,
       author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
-      //tags: document.getElementById("tags-input").value.split(",")
+      tags: document.getElementById("tags-input").value.split(",")
     }).then(function(docRef) {
     window.location.href = "?" + docRef.id;
   }).catch(function(error) {

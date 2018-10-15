@@ -37,7 +37,7 @@ function signin() {
   var password = document.getElementById("signin-password").value;
   firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).then(function() {
     user = firebase.auth().currentUser;
-    window.location.href = "index.html";
+    window.location.href = "https://sycno.tk";
   }).catch(function(error) {
     alert(error);
   });

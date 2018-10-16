@@ -41,11 +41,7 @@ function createNewStory() {
     content: document.getElementById("story-text-area").innerHTML,
     uid: firebase.auth().currentUser.uid,
     tags: document.getElementById("tags-input").value.split(","),
-    public: {
-      favorites: 0,
-      likes: 0,
-      views: 0,
-    }
+    likes: 0;
   }).then(function(docRef) {
     window.location.href = "?" + docRef.id;
   }).catch(function(error) {

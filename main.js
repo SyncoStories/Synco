@@ -71,7 +71,6 @@ function saveStory() {
       throw error;
       buttonToLoad.innerHTML = "<i class='fas fa-exclamation'></i>";
     });
-    document.location.reload();
   }
 }
 

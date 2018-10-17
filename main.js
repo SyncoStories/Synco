@@ -34,7 +34,10 @@ function editStory(storyId) {
 
 
 
-function createNewStory() {
+function createNewStory(buttonToLoad) {
+  if(buttonToLoad) {
+    buttonToLoad.innerHTML = "<i class='fas fa-spinner'></i>";
+  }
   db.collection("stories").add({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
@@ -44,9 +47,15 @@ function createNewStory() {
     likes: 0
   }).then(function(docRef) {
     window.location.href = "?" + docRef.id;
+    if(buttonToLoad) {
+      buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
+    }
   }).catch(function(error) {
     alert(error);
     throw error;
+    if(buttonToLoad) {
+      buttonToLoad.innerHTML = "<i class='fas fa-exclamation'></i>";
+    }
   });
 }
 

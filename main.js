@@ -61,7 +61,7 @@ function saveStory() {
       author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
       uid: firebase.auth().currentUser.uid,
-      tags: document.getElementById("tags-input").value.split(",")
+      tags: document.getElementById("tags-input").value.split(" ")
     });
     document.location.reload();
   }

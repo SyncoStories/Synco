@@ -91,33 +91,6 @@ function hideAllPages() {
   }
 }
 
-function searchStories(search) {
-  hideAllPages();
-  document.getElementById('main-page').style.display = 'block';
-  document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">Loading . . .</h4>';
-  firebase.database().ref("stories").once("value", function(snapshot) {
-    var stories = new Fuse(Object.keys(snapshot.data()).map(function(key) {
-      return {
-        data: snapshot.data()[key],
-        key: key
-      }
-    }), options).search(search);
-    if (stories.length == 0) {
-      document.getElementById('story-cards').innerHTML = '<br><br><h4 style="color: lightgray">No Stories Matched Your Search</h4>';
-    } else {
-      document.getElementById('story-cards').innerHTML = '';
-    }
-    for (var i = 0; i < stories.length; i++) {
-      if (stories[i].data.public.likes == -1) {
-        var likeLikes = "Like"
-      } else {
-        var likeLikes = "Likes"
-      }
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'index.html?' + stories[i].key + '\'"><font class="card-title">' + stories[i].data.title + '</font><p>By ' + stories[i].data.author + ' </p><p>' + stories[i].data.public.likes * -1 + ' <i class="fas fa-thumbs-up"></i></p></span>';
-    }
-  })
-}
-
 
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
@@ -125,7 +98,7 @@ if (!window.location.href.split("?")[1]) {
   db.collection("stories").get().then(function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().public.likes * -1 + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes * -1 + '</p></span>';
     });
   });
 } else {

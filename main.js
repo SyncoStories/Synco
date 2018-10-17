@@ -32,6 +32,12 @@ function editStory(storyId) {
   }
 }
 
+function addTag() {
+  if (document.getElementById("tags-input").value !== '') {
+    document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + document.getElementById("tags-input").value + '</tag>';
+    document.getElementById("tags-input").value = '';
+  }
+}
 
 
 function createNewStory() {

@@ -56,12 +56,20 @@ function createNewStory() {
 
 function saveStory() {
   if (window.location.href.split("?")[1]) {
+    var buttonToLoad = document.getElementById("save-story-btn");
+    buttonToLoad.innerHTML = "<i class='fas fa-spinner'></i>";
     db.collection("stories").doc(window.location.href.split("?")[1]).update({
       title: document.getElementById("story-title-input").value,
       author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
       uid: firebase.auth().currentUser.uid,
       tags: document.getElementById("tags-input").value.split(" ")
+    }).then(function() {
+      buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
+    }).catch(function(error) {
+      alert(error);
+      throw error;
+      buttonToLoad.innerHTML = "<i class='fas fa-exclamation'></i>";
     });
     document.location.reload();
   }

@@ -15,6 +15,7 @@ Just go onto [https://synco.tk](https://synco.tk) and sign up. It is free and ea
 - [ ] Age Appropriate Reccomendations
 - [x] Searching
 - [ ] Advanced Profiles
+- [ ] Private Story Drafts
 
 #### Almost at Beta!
 We've worked for a while now on a project called Synco, and it has flourished beyond are hopes and dreams. While we've closed the Dev Program, we are still hiring programmers and designers to help us make Synco even better.

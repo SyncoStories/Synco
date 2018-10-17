@@ -32,12 +32,6 @@ function editStory(storyId) {
   }
 }
 
-function addTag() {
-  if (document.getElementById("tags-input").value !== '') {
-    document.getElementById("tags").innerHTML += '<tag onclick="this.parentElement.removeChild(this)">' + document.getElementById("tags-input").value + '</tag>';
-    document.getElementById("tags-input").value = '';
-  }
-}
 
 
 function createNewStory() {
@@ -48,7 +42,7 @@ function createNewStory() {
     author: localStorage.name,
     content: document.getElementById("story-text-area").innerHTML,
     uid: firebase.auth().currentUser.uid,
-    tags: document.getElementById("tags-input").value.split(","),
+    tags: document.getElementById("tags-input").value.split(" "),
     likes: 0
   }).then(function(docRef) {
     window.location.href = "?" + docRef.id;

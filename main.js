@@ -20,6 +20,12 @@ function editStory(storyId) {
   window.onbeforeunload = function() {
     return false;
   }
+  //Save Story when Ctrl+S is pressed
+  document.onkeyup = function(e) {
+    if (e.ctrlKey && e.which == 83) {
+      saveStory();
+    }
+  };
 }
 
 
@@ -64,13 +70,6 @@ function saveStory() {
     });
   }
 }
-
-//Save Story when Ctrl+S is pressed
-document.onkeyup = function(e) {
-  if (e.ctrlKey && e.which == 83) {
-    saveStory();
-  }
-};
 
 function likeStory(storyId) {
   db.collection("stories").doc(storyId).get().then(function(snapshot) {

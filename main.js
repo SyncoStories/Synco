@@ -81,6 +81,12 @@ document.onkeyup = function(e) {
   }
 };
 
+function likeStory(storyId) {
+  db.collection("stories").doc(storyId).get().then(function(snapshot) {
+    db.collection("stories").doc(storyId).likes = snapshot.data().likes + 1;
+  });
+}
+
 function rateStory(storyId, rating) {
   db.collection("stories").doc(storyId).collection("ratings").add(rating);
 }
@@ -116,7 +122,7 @@ if (!window.location.href.split("?")[1]) {
   db.collection("stories").get().then(function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes * -1 + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes + '</p></span>';
     });
   });
 } else {

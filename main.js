@@ -9,11 +9,16 @@ function editStory(storyId) {
       document.getElementById("save-story-btn").onclick = saveStory;
     }
   });
+  //Insert Tab when the key is pressed
   document.getElementById("story-text-area").onkeydown = function(e) {
     if (e.keyCode == 9) {
       document.execCommand("insertHTML", false, " ");
       return false;
     }
+  }
+  //Alert the user that changes may not be saved
+  window.onbeforeunload = function() {
+    return false;
   }
 }
 

@@ -237,6 +237,22 @@ button a:hover {
   text-decoration: underline;
 }
 
+@keyframes spin {
+  0% {
+    transform: "rotate(0deg)"
+  }
+  50% {
+    transform: "rotate(180deg)"
+  }
+  100% {
+    transform: "rotate(360deg)"
+  }
+}
+
+.fa-circle-notch {
+  animation: 
+}
+
 body {
   margin: 0;
 }

@@ -36,7 +36,7 @@ function editStory(storyId) {
 
 function createNewStory() {
   var buttonToLoad = document.getElementById("save-story-btn");
-  buttonToLoad.innerHTML = "<i class='fas fa-spinner'></i>";
+  buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
   db.collection("stories").add({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
@@ -57,7 +57,7 @@ function createNewStory() {
 function saveStory() {
   if (window.location.href.split("?")[1]) {
     var buttonToLoad = document.getElementById("save-story-btn");
-    buttonToLoad.innerHTML = "<i class='fas fa-spinner'></i>";
+    buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
     db.collection("stories").doc(window.location.href.split("?")[1]).update({
       title: document.getElementById("story-title-input").value,
       author: localStorage.name,

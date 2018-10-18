@@ -1,31 +1,5 @@
 function editStory(storyId) {
-  hideAllPages();
-  db.collection("stories").doc(storyId).get().then(function(snapshot) {
-    if (snapshot.data().author == localStorage.name) {
-      document.getElementById("edit-page").style.display = "block";
-      document.getElementById("story-title-input").value = snapshot.data().title;
-      document.getElementById("story-text-area").innerHTML = snapshot.data().content;
-      document.getElementById("tags-input").value = snapshot.data().tags;
-      document.getElementById("save-story-btn").onclick = saveStory;
-    }
-  });
-  //Insert Tab when the key is pressed
-  document.getElementById("story-text-area").onkeydown = function(e) {
-    if (e.keyCode == 9) {
-      document.execCommand("insertHTML", false, " ");
-      return false;
-    }
-  }
-  //Alert the user that changes may not be saved
-  window.onbeforeunload = function() {
-    return false;
-  }
-  //Save Story when Ctrl+S is pressed
-  document.onkeyup = function(e) {
-    if (e.ctrlKey && e.which == 83) {
-      saveStory();
-    }
-  };
+  
 }
 
 
@@ -121,13 +95,51 @@ function hideAllPages() {
 
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
+  //Load main page
   loadStories(db.collection("stories").orderBy("likes", "desc").where("published", "==", true));
 } else {
   if (window.location.href.split("?")[1] == "mystories") {
+    //Load my stories page
     loadStories(db.collection("stories").where("author", "==", localStorage.name));
   } else if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
+    //Display Other Page
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
+  } else if(window.location.href.split("?")[2]) {
+    //Story sub-pages
+    if(window.location.href.split("?")[2] == "edit") {
+      //Display Edit Page
+      hideAllPages();
+      db.collection("stories").doc(window.location.href.split("?")[1]).get().then(function(snapshot) {
+        if (snapshot.data().author == localStorage.name || snapshot.data.access[firebase.auth().currentUser.uid] == true) {
+          document.getElementById("edit-page").style.display = "block";
+          document.getElementById("story-title-input").value = snapshot.data().title;
+          document.getElementById("story-text-area").innerHTML = snapshot.data().content;
+          document.getElementById("tags-input").value = snapshot.data().tags;
+          document.getElementById("save-story-btn").onclick = saveStory;
+        } else {
+          alert("You do not have permission to edit this story.");
+        }
+      });
+      //Insert Tab when the key is pressed
+      document.getElementById("story-text-area").onkeydown = function(e) {
+        if (e.keyCode == 9) {
+          document.execCommand("insertHTML", false, " ");
+          return false;
+        }
+      }
+      //Alert the user that changes may not be saved
+      window.onbeforeunload = function() {
+        return false;
+      }
+      //Save Story when Ctrl+S is pressed
+      document.onkeyup = function(e) {
+        if (e.ctrlKey && e.which == 83) {
+          saveStory();
+        }
+      };
+    }
   } else {
+    //Story page
     db.collection("stories").doc(window.location.href.split("?")[1]).get().then(function(snapshot) {
       if (snapshot.data()) {
         var ValContent = snapshot.data().content;

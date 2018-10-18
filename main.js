@@ -124,7 +124,7 @@ if (!window.location.href.split("?")[1]) {
   db.collection("stories").orderBy("likes", "desc").get().then(function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + c + '</p></span>';
     });
   });
 } else {
@@ -135,6 +135,7 @@ if (!window.location.href.split("?")[1]) {
       if (snapshot.data()) {
         var ValContent = snapshot.data().content;
         var ValTitle = snapshot.data().title;
+        var VarLikes = snapshot.data().likes;
         document.getElementById("story-page").style.display = "block";
         document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center><div>" + snapshot.data().content + "</div>";
         if (snapshot.data().tags) {
@@ -143,7 +144,7 @@ if (!window.location.href.split("?")[1]) {
           }
         }
         if (localStorage.name !== "null" && snapshot.data().title !== "Synco: A Work in Progress") {
-          document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
+          document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'> " + VarLikes + " <i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
 
         }
         if (localStorage.name == snapshot.data().author) {

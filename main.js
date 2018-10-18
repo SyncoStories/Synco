@@ -83,7 +83,9 @@ document.onkeyup = function(e) {
 
 function likeStory(storyId) {
   db.collection("stories").doc(storyId).get().then(function(snapshot) {
-    db.collection("stories").doc(storyId).likes = snapshot.data().likes + 1;
+    db.collection("stories").doc(storyId).update({
+      likes: snapshot.data().likes + 1
+    });
   });
 }
 

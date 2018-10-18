@@ -148,9 +148,7 @@ tag {
   padding: 2%;
 }
 
-#story-text-area:hover {
-  border-color: tomato;
-}
+
 
 .dropdown {
   display: inline-block;

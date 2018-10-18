@@ -21,9 +21,9 @@ var user = firebase.auth().currentUser;
 function signup() {
   var newUsername = document.getElementById("new-account-uname").value;
   var newPassword = document.getElementById("new-account-pword").value;
-  firebase.database().ref().child("profiles").push({
-    username: newUsername
-  });
+  //firebase.database().ref().child("profiles").push({
+  //  username: newUsername
+  //});
   firebase.auth().createUserWithEmailAndPassword(newUsername + "@fakeemail.com", newPassword).then(function() {
     window.location.href = "index.html";
   }).catch(function(error) {

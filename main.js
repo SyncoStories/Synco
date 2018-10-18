@@ -114,7 +114,14 @@ if (!window.location.href.split("?")[1]) {
     });
   });
 } else {
-  if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
+  if (window.location.href.split("?")[1] == "mystories") {
+    db.collection("stories").orderBy("likes", "desc").where("uid", "==", firebase.auth().currentUser.uid).get().then(function(snapshot) {
+      document.getElementById('story-cards').innerHTML = '';
+      snapshot.forEach(function(storySnapshot) {
+        document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes + '</p></span>';
+      });
+    });
+  } else if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
   } else {
     db.collection("stories").doc(window.location.href.split("?")[1]).get().then(function(snapshot) {

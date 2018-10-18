@@ -14,7 +14,7 @@ function createNewStory() {
     published: true,
     likes: 0
   }).then(function(docRef) {
-    window.location.href = "?" + docRef.id;
+    window.location.href = "?" + docRef.id + "?edit";
     buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
   }).catch(function(error) {
     alert(error);

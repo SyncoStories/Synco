@@ -1,18 +1,3 @@
-//defining default search options
-var options = {
-  shouldSort: true,
-  threshold: 0.6,
-  location: 0,
-  distance: 100,
-  maxPatternLength: 32,
-  minMatchCharLength: 1,
-  keys: [
-    "data.title",
-    "data.author",
-    "data.tags"
-  ]
-};
-
 function editStory(storyId) {
   hideAllPages();
   db.collection("stories").doc(storyId).get().then(function(snapshot) {

@@ -1,8 +1,6 @@
 function editStory(storyId) {
-  
+  window.location.href = "/?" + storyId + "?edit";
 }
-
-
 
 function createNewStory() {
   var buttonToLoad = document.getElementById("save-story-btn");

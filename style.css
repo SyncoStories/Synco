@@ -237,20 +237,27 @@ button a:hover {
   text-decoration: underline;
 }
 
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes spin {
-  0% {
-    transform: "rotate(0deg)"
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: "rotate(180deg)"
-  }
-  100% {
-    transform: "rotate(360deg)"
+  to {
+    transform: rotate(180deg);
   }
 }
 
 .fa-circle-notch {
-  animation: spin 1s;
+  animation: spin 0.75s infinite;
+  -webkit-animation: spin 0.75s infinite;
 }
 
 body {

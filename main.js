@@ -38,7 +38,7 @@ function createNewStory() {
     author: localStorage.name,
     content: document.getElementById("story-text-area").innerHTML,
     uid: firebase.auth().currentUser.uid,
-    tags: document.getElementById("tags-input").value.split(" "),
+    tags: document.getElementById("tags-input").value.split(","),
     published: true,
     likes: 0
   }).then(function(docRef) {
@@ -60,7 +60,7 @@ function saveStory() {
       author: localStorage.name,
       content: document.getElementById("story-text-area").innerHTML,
       uid: firebase.auth().currentUser.uid,
-      tags: document.getElementById("tags-input").value.split(" ")
+      tags: document.getElementById("tags-input").value.split(",")
     }).then(function() {
       buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
     }).catch(function(error) {
@@ -134,7 +134,7 @@ if (!window.location.href.split("?")[1]) {
         var ValTitle = snapshot.data().title;
         document.getElementById("story-page").style.display = "block";
         document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center><div>" + snapshot.data().content + "</div>";
-        if (snapshot.data().tags) {
+        if (snapshot.data().tags !== [""]) {
           for (var i = 0; i < snapshot.data().tags.length; i++) {
             document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
           }

@@ -34,12 +34,3 @@ function searchbarSearch() {
     alert('ti');
   }
 }
-
-//Make Spinner Spin While Story-Save is loading
-setInterval(function() {
-	if(document.getElementById("save-story-btn").getElementsByClassName("fa-circle-notch")[0]) {
-		document.getElementById("save-story-btn").getElementsByClassName("fa-circle-notch")[0].style.transform = "rotate(" + ((document.getElementById("save-story-btn").getElementsByClassName("fa-circle-notch")[0].style.transform == "") ? "0" : (parseInt(document.getElementById("save-story-btn").getElementsByClassName("fa-circle-notch")[0].style.transform.substr(7).split("d")[0]) + 1)) + "deg)";
-	} else {
-		document.getElementById("save-story-btn").getElementsByClassName("fas")[0].style.transform = "";
-    	}
-}, 0);

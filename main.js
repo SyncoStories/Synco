@@ -120,7 +120,7 @@ if (!window.location.href.split("?")[1]) {
   loadStories(db.collection("stories").orderBy("likes", "desc").where("publised", "==", true));
 } else {
   if (window.location.href.split("?")[1] == "mystories") {
-    loadStories(db.collection("stories").orderBy("likes", "desc").where("uid", "==", firebase.auth().currentUser.uid));
+    loadStories(db.collection("stories").orderBy("likes", "desc").where("author", "==", localStorage.name));
   } else if (document.getElementById(window.location.href.split("?")[1] + "-page")) {
     document.getElementById(window.location.href.split("?")[1] + "-page").style.display = "block"
   } else {

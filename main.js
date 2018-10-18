@@ -1,7 +1,3 @@
-function editStory(storyId) {
-  window.location.href = "/?" + storyId + "?edit";
-}
-
 function createNewStory() {
   var buttonToLoad = document.getElementById("save-story-btn");
   buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
@@ -154,7 +150,7 @@ if (!window.location.href.split("?")[1]) {
 
         }
         if (localStorage.name == snapshot.data().author) {
-          document.getElementById("story-page").innerHTML += "<button class='btn-primary' id='editBtn' onclick='editStory(\"" + window.location.href.split("?")[1] + "\")' style='right: 5px;'><i class='fas fa-edit'></i></button>";
+          document.getElementById("story-page").innerHTML += "<button class='btn-primary' id='editBtn' onclick='window.location.href += \"?edit\"' style='right: 5px;'><i class='fas fa-edit'></i></button>";
         }
       } else {
         document.getElementById("story-404-page").style.display = "block";

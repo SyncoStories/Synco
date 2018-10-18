@@ -148,6 +148,9 @@ tag {
   padding: 2%;
 }
 
+#story-text-area:active {
+  border-color: tomato;
+}
 .dropdown {
   display: inline-block;
 }
@@ -218,6 +221,7 @@ tag {
 .btn-primary:active {
   background: #d87676;
 }
+
 
 .round-hover {
   border-radius: 50%;

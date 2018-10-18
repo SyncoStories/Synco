@@ -25,7 +25,7 @@ function signup() {
   //  username: newUsername
   //});
   firebase.auth().createUserWithEmailAndPassword(newUsername + "@fakeemail.com", newPassword).then(function() {
-    window.location.href = "index.html";
+    window.location.href = "https://synco.tk";
   }).catch(function(error) {
     alert(error)
   });
@@ -37,7 +37,7 @@ function signin() {
   var password = document.getElementById("signin-password").value;
   firebase.auth().signInWithEmailAndPassword(uname + "@fakeemail.com", password).then(function() {
     user = firebase.auth().currentUser;
-    window.location.href = "https://sycno.tk";
+    window.location.href = "https://synco.tk";
   }).catch(function(error) {
     alert(error);
   });

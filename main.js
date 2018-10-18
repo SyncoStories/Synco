@@ -74,6 +74,13 @@ function saveStory() {
   }
 }
 
+//Save Story when Ctrl+S is pressed
+document.onkeyup = function(e) {
+  if (e.ctrlKey && e.which == 83) {
+    saveStory();
+  }
+};
+
 function rateStory(storyId, rating) {
   db.collection("stories").doc(storyId).collection("ratings").add(rating);
 }

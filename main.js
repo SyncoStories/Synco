@@ -139,13 +139,12 @@ if (!window.location.href.split("?")[1]) {
         var ValContent = snapshot.data().content;
         var ValTitle = snapshot.data().title;
         document.getElementById("story-page").style.display = "block";
-        document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center> ";
+        document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center> <div>" + snapshot.data().content + "</div>"";
         if (snapshot.data().tags !== [""]) {
           for (var i = 0; i < snapshot.data().tags.length; i++) {
             document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
           }
         }
-        document.getElementById("story-page").innerHTML += "<div> <br> <br> " + snapshot.data().content + "</div>";
         if (localStorage.name !== "null" && snapshot.data().title !== "Synco - A Project") {
           document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
 

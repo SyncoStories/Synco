@@ -155,7 +155,7 @@ if (!window.location.href.split("?")[1]) {
       } else {
         document.getElementById("story-404-page").style.display = "block";
       }
-      document.getElementById("story-page").innerHTML +=  "<div>" + snapshot.data().content + "</div>;
+      document.getElementById("story-page").innerHTML +=  "<div>" + snapshot.data().content + "</div>";
     });
   }
 

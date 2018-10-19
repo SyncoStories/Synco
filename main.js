@@ -1,12 +1,16 @@
 function createNewStory() {
   var buttonToLoad = document.getElementById("save-story-btn");
   buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
+  var d = new Date;
+  var Month = d.getMonth + 1;
+  var Year = d.getFullYear:
   db.collection("stories").add({
     title: document.getElementById("story-title-input").value,
     author: localStorage.name,
     content: document.getElementById("story-text-area").innerHTML,
     uid: firebase.auth().currentUser.uid,
     tags: document.getElementById("tags-input").value.split(","),
+    date: d.getDate + "/" + Month + "/" + Year,
     published: true,
     likes: 0
   }).then(function(docRef) {
@@ -75,7 +79,7 @@ function loadStories(ref) {
   ref.get().then(function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p> ' + storySnapshot.data().date + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes + '</p></span>';
     });
   });
 }

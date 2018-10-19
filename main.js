@@ -9,7 +9,7 @@ function createNewStory() {
      tags: document.getElementById("tags-input").value.split(","),
      published: true,
      likes: 0,
-     comments: "Hello, from Synco!"
+     comments: ""
    }).then(function(docRef) {
      window.location.href = "?" + docRef.id + "?edit";
      buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
@@ -44,6 +44,14 @@ function likeStory(storyId) {
   db.collection("stories").doc(storyId).get().then(function(snapshot) {
     db.collection("stories").doc(storyId).update({
       likes: snapshot.data().likes + 1
+    });
+  });
+}
+
+function  commentOn(storyId) {
+  db.collection("stories").doc(storyId).get().then(function(snapshot) {
+    db.collection("stories").doc(storyId).update({
+      likes: snapshot.data().comments + document.getElementById("CommentBox").value;
     });
   });
 }
@@ -141,21 +149,27 @@ if (!window.location.href.split("?")[1]) {
         var ValTitle = snapshot.data().title;
         document.getElementById("story-page").style.display = "block";
         document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center> <div>" + snapshot.data().content + "</div>";
-        if (snapshot.data().tags !== [""]) {
-          for (var i = 0; i < snapshot.data().tags.length; i++) {
-            document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
-          }
-        }
-        if (localStorage.name !== "null" && snapshot.data().title !== "Synco - A Project") {
-          document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
-
-        }
+        
         if (localStorage.name == snapshot.data().author) {
           document.getElementById("story-page").innerHTML += "<button class='btn-primary' id='editBtn' onclick='window.location.href += \"?edit\"' style='right: 5px;'><i class='fas fa-edit'></i></button>";
+        }
+         if (localStorage.name !== "null" && snapshot.data().title !== "Synco - A Project") {
+          document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
+
         }
       } else {
         document.getElementById("story-404-page").style.display = "block";
       }
+       if (snapshot.data().tags !== [""]) {
+          for (var i = 0; i < snapshot.data().tags.length; i++) {
+            document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
+          }
+        }
+       if (snapshot.data().comments !== [""]) {
+          for (var i = 0; i < snapshot.data().tags.length; i++) {
+            document.getElementById("story-page").innerHTML += "<span>" + snapshot.data().comments[i] + "</span> <hr>";
+          }
+        }
     });
   }
 

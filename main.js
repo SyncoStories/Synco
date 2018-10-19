@@ -139,7 +139,7 @@ if (!window.location.href.split("?")[1]) {
         var ValContent = snapshot.data().content;
         var ValTitle = snapshot.data().title;
         document.getElementById("story-page").style.display = "block";
-        document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center>";
+        document.getElementById("story-page").innerHTML = "<center><h1>" + snapshot.data().title + "</h1><h5> By " + snapshot.data().author + "</h5></center> <br><div>" + snapshot.data().content + "</div>";
         if (snapshot.data().tags !== [""]) {
           for (var i = 0; i < snapshot.data().tags.length; i++) {
             document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
@@ -155,7 +155,6 @@ if (!window.location.href.split("?")[1]) {
       } else {
         document.getElementById("story-404-page").style.display = "block";
       }
-      document.getElementById("story-page").innerHTML +=  "<div>" + snapshot.data().content + "</div>";
     });
   }
 

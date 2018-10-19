@@ -52,7 +52,7 @@ a:hover {
 }
 
 .navbar {
-  position: relative;
+  position: fixed;
   background-color: tomato;
   width: 100%;
   display: table;

@@ -75,7 +75,7 @@ function loadStories(ref) {
   ref.get().then(function(snapshot) {
     document.getElementById('story-cards').innerHTML = '';
     snapshot.forEach(function(storySnapshot) {
-      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p> ' + storySnapshot.data().date + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes + '</p></span>';
+      document.getElementById('story-cards').innerHTML += '<span class="card" onclick="window.location.href = \'https://synco.tk/?' + storySnapshot.id + '\'"><font class="card-title">' + storySnapshot.data().title + '</font><p><i class="fas fa-address-card"></i> ' + storySnapshot.data().author + ' </p><p><i class="fas fa-thumbs-up"></i> ' + storySnapshot.data().likes + '</p></span>';
     });
   });
 }

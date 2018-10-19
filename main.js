@@ -145,7 +145,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
           }
         }
-        document.getElementById("story-page").innerHTML += "<div>" + snapshot.data().content + "</div>";
+        document.getElementById("story-page").innerHTML += "<br> <div>" + snapshot.data().content + "</div>";
         if (localStorage.name !== "null" && snapshot.data().title !== "Synco - A Project") {
           document.getElementById("story-page").innerHTML += "<br><br><button class='btn-primary' onclick='likeStory(\"" + window.location.href.split("?")[1] + "\")'><i class='fas fa-thumbs-up'></i> </button> <a class='btn-primary' id='Download' style='right: 5px;' download='" + ValTitle + ".html' href='data:text/plain;charset=utf-8," + ValContent + "'> <i class='fas fa-upload'></i></a>";
 

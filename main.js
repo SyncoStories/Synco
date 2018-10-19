@@ -1,23 +1,23 @@
 function createNewStory() {
-  var buttonToLoad = document.getElementById("save-story-btn");
-  buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
-  db.collection("stories").add({
-    title: document.getElementById("story-title-input").value,
-    author: localStorage.name,
-    content: document.getElementById("story-text-area").innerHTML,
-    uid: firebase.auth().currentUser.uid,
-    tags: document.getElementById("tags-input").value.split(","),
-    published: true,
-    likes: 0
-  }).then(function(docRef) {
-    window.location.href = "?" + docRef.id + "?edit";
-    buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
-  }).catch(function(error) {
-    alert(error);
-    throw error;
-    buttonToLoad.innerHTML = "<i class='fas fa-exclamation'></i>";
-  });
-}
+   var buttonToLoad = document.getElementById("save-story-btn");
+   buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
+   db.collection("stories").add({
+     title: document.getElementById("story-title-input").value,
+     author: localStorage.name,
+     content: document.getElementById("story-text-area").innerHTML,
+     uid: firebase.auth().currentUser.uid,
+     tags: document.getElementById("tags-input").value.split(","),
+     published: true,
+     likes: 0
+   }).then(function(docRef) {
+     window.location.href = "?" + docRef.id + "?edit";
+     buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
+   }).catch(function(error) {
+     alert(error);
+     throw error;
+     buttonToLoad.innerHTML = "<i class='fas fa-exclamation'></i>";
+   });
+ }
 
 function saveStory() {
   if (window.location.href.split("?")[1]) {

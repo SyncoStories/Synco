@@ -42,7 +42,7 @@ function saveStory() {
 function likeStory(storyId) {
   db.collection("stories").doc(storyId).get().then(function(snapshot) {
     db.collection("stories").doc(storyId).update({
-      likes: snapshot.data().likes + 1
+      likes: snapshot.data().likes + firebase.auth().currentUser.uid
     });
   });
 }

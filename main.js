@@ -8,8 +8,7 @@ function createNewStory() {
      uid: firebase.auth().currentUser.uid,
      tags: document.getElementById("tags-input").value.split(","),
      published: true,
-     likes: 0,
-     comments: ""
+     likes: 0
    }).then(function(docRef) {
      window.location.href = "?" + docRef.id + "?edit";
      buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";
@@ -48,13 +47,6 @@ function likeStory(storyId) {
   });
 }
 
-function  commentOn(storyId) {
-  db.collection("stories").doc(storyId).get().then(function(snapshot) {
-    db.collection("stories").doc(storyId).update({
-      likes: snapshot.data().comments + document.getElementById("CommentBox").value;
-    });
-  });
-}
 
 function rateStory(storyId, rating) {
   db.collection("stories").doc(storyId).collection("ratings").add(rating);

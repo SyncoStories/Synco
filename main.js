@@ -165,11 +165,7 @@ if (!window.location.href.split("?")[1]) {
             document.getElementById("story-page").innerHTML += "<tag>" + snapshot.data().tags[i] + "</tag>";
           }
         }
-       if (snapshot.data().comments !== [""]) {
-          for (var i = 0; i < snapshot.data().tags.length; i++) {
-            document.getElementById("story-page").innerHTML += "<span>" + snapshot.data().comments[i] + "</span> <hr>";
-          }
-        }
+    
     });
   }
 

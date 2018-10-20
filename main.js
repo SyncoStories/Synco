@@ -41,7 +41,8 @@ function saveStory() {
 
 function likeStory(storyId) {
   db.collection("stories").doc(storyId).get().then(function(snapshot) {
-     let likes = snapshot.data().likes.push(firebase.auth().currentUser.uid);
+     let likes = snapshot.data().likes;
+     likes.push(firebase.auth().currentUser.uid);
     db.collection("stories").doc(storyId).update({
       likes: likes
     });

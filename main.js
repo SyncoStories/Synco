@@ -8,7 +8,7 @@ function createNewStory() {
      uid: firebase.auth().currentUser.uid,
      tags: document.getElementById("tags-input").value.split(","),
      published: true,
-     likes: []
+     likes: [""]
    }).then(function(docRef) {
      window.location.href = "?" + docRef.id + "?edit";
      buttonToLoad.innerHTML = "<i class='fas fa-save'></i>";

@@ -93,7 +93,7 @@ function hideAllPages() {
 hideAllPages();
 if (!window.location.href.split("?")[1]) {
   //Load main page
-  loadStories(db.collection("stories").orderBy("likes", "desc").where("published", "==", true));
+  loadStories(db.collection("stories").orderBy("likes.length", "desc").where("published", "==", true));
 } else {
   if (window.location.href.split("?")[1] == "mystories") {
     //Load my stories page

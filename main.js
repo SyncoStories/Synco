@@ -40,14 +40,17 @@ function saveStory() {
   }
 }
 
-function likeStory(storyId) {
+function likeStory(storyId) 
+
   db.collection("stories").doc(storyId).get().then(function(snapshot) {
      let likes = snapshot.data().likes;
+     if (snapshot.data().likes.includes(firebase.auth().currentUser.uid)) {
      likes.push(firebase.auth().currentUser.uid);
     db.collection("stories").doc(storyId).update({
       likes: likes
     });
   });
+  }
 }
 
 

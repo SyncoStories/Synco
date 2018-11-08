@@ -46,11 +46,14 @@ function likeStory(storyId)
      let likes = snapshot.data().likes;
      if (snapshot.data().likes.includes(firebase.auth().currentUser.uid)) {
      likes.push(firebase.auth().currentUser.uid);
+        alert("You have already liked this story");
+     } else
+     likes.push(firebase.auth().currentUser.uid);   
+     }
     db.collection("stories").doc(storyId).update({
       likes: likes
     });
   });
-  }
 }
 
 

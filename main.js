@@ -2,7 +2,6 @@ function createNewStory() {
    var buttonToLoad = document.getElementById("save-story-btn");
    buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
    var ContentText = document.getElementById("story-text-area").innerHTML;
-   if ( ContentText.length > 5) {
    db.collection("stories").add({
      title: document.getElementById("story-title-input").value,
      author: localStorage.name,
@@ -19,7 +18,6 @@ function createNewStory() {
      throw error;
      buttonToLoad.innerHTML = "<i class='fas fa-exclamation'></i>";
    });
-   }
  }
 
 function saveStory() {

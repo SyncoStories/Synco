@@ -2,7 +2,7 @@ function createNewStory() {
    var buttonToLoad = document.getElementById("save-story-btn");
    buttonToLoad.innerHTML = "<i class='fas fa-circle-notch'></i>";
    var ContentText = document.getElementById("story-text-area").innerHTML;
-   if ( ContentText.length > 90) {
+   if ( ContentText.length > 5) {
    db.collection("stories").add({
      title: document.getElementById("story-title-input").value,
      author: localStorage.name,

@@ -52,6 +52,13 @@ function signout() {
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
+   setInterval(function () {
+    if (firebase.auth().currentUser) {
+      if (localStorage.name !== user.email.replace("@fakeemail.com", "")) {
+        signout()
+      }
+    }
+  }, 100)
   if(user) {
     document.getElementById("navbar-username").innerHTML = "<div class='dropdown' style='float: right'><a class='toggle-dropdown'>" + user.email.replace("@fakeemail.com", "") + "</a><ul style='right: 0px; color: gray; max-height: 100px; margin: 20px 10px;'><li onclick='window.location.href = \"?edit\";'>Make a New Story</li><li onclick='window.location.href = \"?mystories\"'>My Stories</li><li onclick='signout()'>Logout</li></ul>";  
     localStorage.name = user.email.split("@")[0];
